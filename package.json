@@ -1,0 +1,19 @@
+{
+  "name": "studbud",
+  "version": "1.0.0",
+  "description": "DECO2017 Assignment 3 node project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mralexhan/studbud.git"
+  },
+  "author": "Alex Han",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mralexhan/studbud/issues"
+  },
+  "homepage": "https://github.com/mralexhan/studbud#readme"
+}
