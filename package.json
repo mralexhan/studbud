@@ -4,6 +4,7 @@
   "description": "DECO2017 Assignment 3 node project",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mralexhan/studbud/issues"
   },
-  "homepage": "https://github.com/mralexhan/studbud#readme"
+  "homepage": "https://github.com/mralexhan/studbud#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
