@@ -1,16 +1,225 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Studbud</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css" text = text/css>
-    </head>
-    <body>
-        <h1>Studbud</h1>
-        <p>Website for Studbud</p>
-        <script src="script.js"></script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "scss/main.scss">
+    <title>Studbud</title>
+</head>
+
+<body>
+
+  <!--Mobile navbar. Outside of header so it can cover the whole page-->
+  <div class="menu">
+    <a class="navbox" href="index.html">Your Tasks</a>
+    <a class="navbox" href="pomodoro.html">Pomodoro Timer</a>
+    <a class="navbox" href="reading.html">Reading List</a>
+  </div>
+
+  <!--Creates hamburger menu -->
+  <div class="menu-toggle">
+    <span></span>
+  </div>
+
+  <div class="grid-container">
+
+    <div class="header">
+      <a href="index.html">
+        <img src="images/Logo.png" alt="Studbud Logo">
+      </a>
+
+      <div class="navlinks">
+        <a href="index.html">Your Tasks</a>
+        <a href="pomodoro.html">Pomodoro Timer</a>
+        <a href="reading.html">Reading List</a>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="main">
+      <h1>Your Tasks</h1>
+
+      <div class="taskContent" id="taskContent">
+
+        <!--Unordered list where task columns go-->
+        <ul>
+
+          <div class="taskColumn" id="firstColumn">
+            <h2>To Do</h2>
+
+            <button class="taskOut">
+              <img class="icon" src="images/Remove.png" alt="Remove Task Column Icon">
+            </button>
+
+            <!--Unordered list where task cards go-->
+            <ul>
+
+              <!--Example of a task card. Display set to none in css-->
+              <div class="taskCard">
+
+                <div class="taskCardTitle">
+                  <h3>INFO1234 Assessment 1</h3>
+                </div>
+
+                <div class="taskCardInfo">
+                  <p>Due Date: 04/04/2022</p>
+                  <p>Priority Rating: <span class="pHigh">High</span></p>
+                  <p>Est. Time to Complete: 8H40M</p>
+                </div>
+
+                <div class="taskCardIcons">
+
+                  <button>
+                    <img class="icon" src="images/Trashcan.png" alt="Remove Task Icon">
+                  </button>
+
+                  <button>
+                    <img class="icon" src="images/CompNo.png" alt="Task Not Completed Icon">
+                  </button>
+
+                  <button>
+                    <img class="icon" src="images/CompYes.png" alt="Task Completed Icon">
+                  </button>
+
+                </div>
+
+              </div>
+            </ul>
+
+            <!--Add new task card button-->
+            <button class="taskAdd" id="taskAdd">
+              <img class="icon" src="images/Add.png" alt="Add Task Button">
+            </button>
+
+
+
+          </div>
+
+        </ul>
+
+        <!--Button for adding a new task column on page-->
+        <button class="taskColumnAdd" id="taskColumnAdd">
+          <img class="icon" src="images/Add.png" alt="Add Task Column Button">
+        </button>
+      </div>
+
+      <!--Form for adding a new task into a task column-->
+      <form class="newTaskForm">
+        <h2>Add New Task</h2>
+        <button type="button" class="newTaskOut" id="newTaskOut">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="taskName">Name of Task:</label><br>
+          <input class="fullIn" type="text" id="taskName" name="taskName"><br>
+
+          <label for="taskDue">Due Date:</label><br>
+          <input type="date" id="taskDue" name="taskDue"><br>
+
+          <label for="taskPriority">Priority Rating:</label><br>
+          <select id="taskPriority" name="taskPriority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select><br>
+
+          <label for="taskComp">Est. Time to Complete (in minutes)</label><br>
+          <input type="number" id="taskComp" name="taskComp"><br>
+
+          <input type="submit" id="taskSubmit" class="addSubmit" value="Add">
+        </div>
+
+      </form>
+
+      <!--Form for adding a new task column onto the page-->
+      <form class="newTaskColumnForm">
+        <h2>Add New Task Column</h2>
+        <button type="button" class="newTaskOut" id="newTaskColumnOut">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="taskColumnName">Name of Task Column:</label><br>
+          <input class="fullIn" type="text" id="taskColumnName" name="taskColumnName"><br>
+
+          <label for="colorpicker">Task Column Color:</label>
+          <input type="color" id="colorpicker" value="#ED9D28">
+
+          <input type="submit" id="taskColumnSubmit" class="addSubmit" value="Add">
+        </div>
+      </form>
+
+    </div>
+
+
+    <!--HTML for music player-->
+    <div class="musicPlayer">
+      <!--album cover portion of music player-->
+      <div class="album">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
+      </div>
+
+      <!--Rest of the things on the music player-->
+      <div class="musicMain">
+        <!--The song and artist names section-->
+        <div class="musicInfo">
+          <h2>Welcome to the Black Parade</h2>
+          <p>My Chemical Romance</p>
+        </div>
+
+        <!--The middle portion of the music player-->
+        <div class="musicMiddle">
+          <!--where the music comes from-->
+          <audio id="music" preload="auto" loop="false">
+            <source src="music/05 Welcome To The Black Parade.mp3" type="audio/mp3">
+          </audio>
+          <!--The pause, play, next song, and previous song buttons section-->
+          <div class="musicButtons">
+            <button class="icon">
+              <img class="icon" src="images/PreviousSong.png" alt="Previous Song Icon">
+            </button>
+
+            <button class="icon" id="play">
+              <img class="icon" src="images/Play.png" alt="Play Song Icon">
+            </button>
+
+            <button class="icon" id="pause">
+              <img class="icon" src="images/Pause.png" alt="Pause Song Icon">
+            </button>
+
+            <button class="icon">
+              <img class="icon" src="images/NextSong.png" alt="Next Song Icon">
+            </button>
+
+          </div>
+
+          <!--timeline that shows how far along a song you are-->
+          <div class="musicTimer">
+            <!--html for music elapsed timeline. Code from https://codepen.io/ozzie/pen/YPOBEJ-->
+            <div id="slider">
+              <div id="elapsed"></div>
+            </div>
+            <p id="timer">0:00</p>
+          </div>
+        </div>
+
+        <!--Playlist button-->
+        <button class="playlist">
+          <img class="icon" src="images/Playlist.png" alt="Playlist Icon">
+        </button>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+  <script src="tasklist.js"></script>
+</body>
+
 </html>

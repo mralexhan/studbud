@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "scss/main.scss">
+        <title>Studbud</title>
+</head>
+<body>
+
+    <!--Mobile navbar. Outside of header so it can cover the whole page-->
+    <div class="menu">
+      <a class="navbox" href="index.html">Your Tasks</a>
+      <a class="navbox" href="pomodoro.html">Pomodoro Timer</a>
+      <a class="navbox" href="reading.html">Reading List</a>
+    </div>
+  
+    <!--Creates hamburger menu -->
+    <div class="menu-toggle">
+      <span></span>
+    </div>
+  
+    <div class="grid-container">
+  
+      <div class="header">
+        <a href="index.html">
+          <img src="images/Logo.png" alt="Studbud Logo">
+        </a>
+  
+        <div class="navlinks">
+          <a href="index.html">Your Tasks</a>
+          <a href="pomodoro.html">Pomodoro Timer</a>
+          <a href="reading.html">Reading List</a>
+        </div>
+  
+  
+  
+      </div>
+  
+  
+      <div class="main">
+        <h1>Pomodoro Timer</h1>
+  
+        <form class="bigPomo">
+          <div class="times">
+            <div class="timeInput">
+              <label for="pomo">Pomodoro</label>
+              <input type="number" id="pomo" name="pomo" value="15">
+            </div>
+            <div class="timeInput">
+              <label for="sBreak">Short Break</label>
+              <input type="number" id="sBreak" name="sBreak" value="15">
+            </div>
+            <div class="timeInput">
+              <label for="lBreak">Long Break</label>
+              <input type="number" id="lBreak" name="lBreak" value="15">
+            </div>
+          </div>
+  
+          <input type="button" class="startPomo" value="Start">
+  
+        </form>
+  
+        <div class="lilPomo">
+          <div class="times">
+            <div class="timeInput">
+              <h2>Pomodoro</h2>
+              
+              <!--Input timer-->
+              <h2>16:00</h2>
+            </div>
+            
+          </div>
+  
+          <button class="stopPomo">Stop</button>
+  
+        </div>
+  
+        <div class="pomoDescription">
+          <p>The Pomodoro Technique is a time management method where you split up your work/study time with short breaks
+            between intervals. Typically one pomodoro work period lasts for around 25 minutes, and is then followed by a
+            short break, usually around 5 - 10 minutes. After 4 pomodoro work periods, take one long break, which usually
+            takes around 15 - 20 minutes. Splitting up your time like this makes it less likely that you get burned out by
+            your long work hours, and many people find the Pomodoro Technique useful for increasing productivity.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  
+  
+    <div class="musicPlayer">
+      <h2>Music</h2>
+  
+  
+  
+    </div>
+    </div>
+  
+  
+    <script src="pomodoro.js"></script>
+  </body>
+</html>

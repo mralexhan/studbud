@@ -1,0 +1,286 @@
+@media only screen and (max-width: 450px){
+
+  /*Removes the browser nav bar*/
+  .navlinks{
+    display: none;
+  }
+
+  /*Creates a nav bar hidden in the right side of the screen. Code from https://codepen.io/robdongas/pen/MWvKMRp*/
+  .menu{
+    position: absolute;
+    right: -60vw;
+    z-index: 998;
+    color: black;
+    background: #0B6E4F;
+    width: 60vw;
+    padding-top: 75px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    transition-property: right;
+    transition-duration: 0.2s;
+  }
+
+  /*Makes the menu appear when the user clicks on it*/
+  .menu.active{
+    right: 0;
+  }
+
+  /*Styles the text/links inside the nav menu*/
+  .menu a{
+    color: white;
+    font-size: 1.3em;
+    text-decoration: none;
+  }
+
+  /*Creates the space where the hamburger menu would appear*/
+  .menu-toggle{
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    z-index: 999;
+    height: 5vh;
+    width: 8vw;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  /*Styles the three bars of the hamburger menu*/
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after{
+    position: absolute;
+    content: "";
+    width: 8vw;
+    height: 0.5vh;
+    background: white;
+    border-radius: 20px;
+    transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  /*Spaces the top bar of the hamburger menu*/
+  .menu-toggle span::before{
+    top:-1.7vh;
+  }
+
+  /*Spaces the bottom bar of the hamburger menu*/
+  .menu-toggle span::after{
+    top: 1.7vh;
+  }
+
+  /*Makes the nav icon invisible when clicked*/
+  .menu-toggle.active > span{
+    background: transparent;
+  }
+
+  /*Colors the bars after they've been clicked*/
+  .menu-toggle.active > span::before, .menu-toggle.active > span::after{
+    top: 0px;
+  }
+
+  /*Rotates the top bar to form half of the "X"*/
+  .menu-toggle.active > span::before{
+    transform: rotate(-225deg);
+  }
+
+  /*Rotates the bottom bar to form the other half of the "X"*/
+  .menu-toggle.active > span::after{
+    transform: rotate(225deg);
+  }
+
+  /*Creates the invidual boxes inside the nav menu*/
+  .navbox{
+    margin-bottom: -2px; /*Makes it so the borders overlap and don't seem thicker*/
+    background-color: #0B6E4F;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 2px 0px;
+    border-color: white;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+  }
+
+  /*Changes what the navboxes looks like when the user hovers over them*/
+  .navbox:hover{
+    background-color: #EBA640;
+    color: black;
+  }
+
+  .header a{
+    font-size: 0em;
+  }
+  
+  .main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main h1{
+    padding: 0;
+  }
+  
+  .taskContent{
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .taskColumn{
+    width: 85vw;
+    margin-right: 0vw;
+  }
+
+  .taskOut{
+    left: 75vw;
+  }
+
+  .taskColumn h2{
+    margin: 2vw;
+  }
+  
+  .taskCard{
+    width: 80vw;
+  }
+
+  .taskCard button{
+    border: none;
+    margin-top: 1vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 2vh;
+  }
+
+  .taskAdd{
+    width: 80vw;
+  }
+
+  .taskColumnAdd{
+    width: 85vw;
+  }
+
+  .fullIn{
+    width: 72vw;
+  }
+
+  .newTaskOut{
+  left: 72vw;
+  top: 1vh;
+  }
+
+  .newTaskForm{
+    width: 80vw;
+    margin-left: -42vw;
+  }
+
+  .newTaskForm{
+    width: 80vw;
+    margin-left: -42vw;
+  }
+
+  .newTaskColumnForm{
+    width: 80vw;
+    margin-left: -42vw;
+  }
+  
+  .addSubmit{
+    width: 20vw;
+  }
+
+
+
+  
+  /*pomodoro timer css*/
+  .bigPomo{
+    min-height: 50vh;
+  }
+  
+  .times{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeInput label{
+    font-size: 2em;
+    width: 50vw;
+  }
+
+  .timeInput input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 5px solid black;
+    font-size: 2em;
+    width: 7.7vw;
+  }
+
+  /*reference list css*/
+  .addReferences{
+    width: 90vw;
+    margin-top: 3vh;
+  }
+
+  .newReferences{
+    width: 30vw;
+    font-size: 0.7em;
+    margin-bottom: 3vh;
+  }
+
+  .referenceList{
+    font-size: 0.8em;
+  }
+
+  .referenceFront h2{
+    font-size: 1.3em;
+  }
+
+  .singleReference{
+    height: 17vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2vw;
+  }
+
+  .singleReference .referenceFront{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 8vh;
+    margin-top: 2vh;
+  }
+
+  .singleReference a{
+    margin-bottom: 1vh;
+    margin-left: 70vw;
+    font-size: 1.2em;
+  }
+  
+  .groupTitle{
+    height:7vh;
+    padding-left: 2vw;
+  }
+
+  /*all these need their own css because the different margin sizes in their web form css overwrites the default form css if we were to try implementing that*/
+  .newGroupRefForm{
+    width: 80vw;
+    margin-left: -42vw;
+  }
+
+  .newSingleRefForm{
+    width: 80vw;
+    margin-left: -42vw;
+  }
+
+  .newSingleRefFormInGroup{
+    width: 80vw;
+    margin-left: -42vw;
+  }
+}

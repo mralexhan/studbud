@@ -1,0 +1,637 @@
+@import "reset.scss";
+@import "typography.scss";
+@import "layout.scss";
+@import "screen.scss";
+
+/*sets css for all forms on website*/
+form{
+  display: none;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  background-color: white;
+  border: 2px solid #0B6E4F;
+  padding: 2.5vw;
+}
+
+form h2{
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+/*Makes it so the mobile nav bar won't appear in the web version*/
+.menu{
+  display: none;
+}
+
+/*Sets default style of every button on page*/
+button{
+  border: none;
+  font-size: 0px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+/*styles all icons in the page*/
+.icon{
+  height: 4vh;
+  background-color: transparent;
+}
+
+/*grid layout for the entire page*/
+.grid-container {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 15% 1fr 12%; 
+  grid-template-areas: 
+    "header"
+    "main"
+    "musicplayer"; 
+
+  /*Forces grid to cover entire screen*/
+  width: 100wh; 
+  height: 100vh;
+}
+
+/*header css*/
+.header {
+  grid-area: header;
+  /*position: fixed;
+  height: 15vh;
+  width: 100vw;*/
+  background-color: #0B6E4F;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header img{
+  height: 10vh;
+  padding-left: 3vw;
+}
+
+.header .navlinks{
+  width: 35vw;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.header a{
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none; /*Removes underline from link*/
+}
+
+.header a:hover{
+  color: #EBA640;
+  transition: 0.2s;
+}
+
+
+/*main css*/
+.main {
+  grid-area: main;
+  overflow-y: scroll;
+  padding: 2vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.main h1{
+  padding-left: 4vw;
+  padding-bottom: 2vh;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+/*Your Tasks CSS*/
+
+/*makes the first column on page disappear. Here so that the javascript doesnt need a rewrite*/
+#firstColumn {
+  display: none;
+}
+
+/*Makes sure task columns go across in a row*/
+.taskContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.taskContent ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+/*styles the task columns*/
+.taskColumn{
+  position: relative; /*Makes this the parent container for taskOut button position*/
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  align-items: center;
+  /*min-height lets the div auto resize itself based on content*/
+  min-height: 20vh;
+  width: 21vw;
+  background-color: #ED9D28;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding-bottom: 2vh;
+  margin-right: 3vw;
+  margin-bottom: 5vh;
+}
+
+/*makes sure that task cards go down in a row*/
+.taskColumn ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taskOut{
+  position: absolute; 
+  left: 18.5vw;
+  top: 1vh;
+  background-color: transparent;
+}
+
+.taskOut .icon{
+  height: 3vh;
+}
+
+/*styles the task cards*/
+.taskCard{
+  min-height: 20vh;
+  width: 19vw;
+  background-color: white;
+  border: 0.1px solid black;
+  border-radius: 15px;
+  margin-bottom: 2vh;
+}
+
+/*styles the add task button*/
+.taskAdd{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  width: 19vw;
+  background-color: white;
+  border: 0.1px solid black;
+  border-radius: 10px;
+}
+
+.taskAdd .icon{
+  height: 3vh;
+}
+
+/*styles the title part of the task card*/
+.taskCardTitle{
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  border-radius: 13px 13px 0px 0px;
+}
+
+.taskCardTitle h3{
+  color: white;
+}
+
+/*styles the information part of the task card*/
+.taskCardInfo{
+  padding: 1vh;
+}
+
+.taskCardInfo p{
+  margin-bottom: 1vh;
+}
+
+/*Colors the color of the priority ratings*/
+.pHigh{
+  color: #B32323;
+}
+
+.pMedium{
+  color: #183FBD;
+}
+
+.pLow{
+  color: #0B6E4F;
+}
+
+.taskCardIcons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.taskCard button{
+  margin-top: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 2vh;
+}
+
+
+.taskColumn h2{
+  padding: 1vw;
+  font-size: 1.5em;
+}
+
+/*styles add new task column button*/
+.taskColumnAdd{
+  width: 21vw;
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+}
+
+.taskColumnAdd .icon{
+  height: 3vh;
+}
+
+
+/*styles the close buttons*/
+.newTaskOut{
+  position: absolute; 
+  left: 27vw;
+  top: 2vh;
+  background-color: transparent;
+}
+
+.newTaskOut .icon{
+  height: 3vh;
+}
+
+input{
+  margin-bottom: 2vh;
+}
+
+select{
+  margin-bottom: 2vh;
+}
+
+.newTaskForm{
+  width: 30vw;
+  min-height: 50vh;
+  margin-top: -25vh; /* Negative half of height. */
+  margin-left: -15vw; /* Negative half of width. */
+}
+
+.fullIn{
+  width: 25vw;
+}
+
+/*styles the submit buttons on the forms*/
+.addSubmit{
+  display: block;
+  background: #EBA640;
+  color: black;
+  
+  border-radius: 25px;
+  width: 7vw;
+  height: 5vh;
+  margin: auto;
+  margin-top: 2vh;
+  cursor: pointer;
+}
+
+.newTaskColumnForm{
+  width: 30vw;
+  min-height: 30vh;
+  margin-top: -15vh; /* Negative half of height. */
+  margin-left: -15vw; /* Negative half of width. */
+}
+
+
+
+
+
+
+/*Pomodoro Timer Page Code*/
+.bigPomo{
+  position: static;
+  display: block;
+  margin: auto;
+  background-color: #EBA640;
+  width: 72vw;
+  height: 50vh;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 2vw;
+}
+
+.lilPomo{
+  position: static;
+  display: none; /*should be block when not none*/
+  margin: auto;
+  background-color: #EBA640;
+  width: 24vw;
+  height: 50vh;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 2vw;
+}
+
+.lilPomo h2{
+  font-size: 3em;
+}
+
+.times{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 68vw;
+  height: 33vh;
+}
+
+.timeInput{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 20vw;
+}
+
+.timeInput label{
+  font-size: 3em;
+}
+
+.startPomo{
+  display: block;
+  background: white;
+  color: black;
+  font-size: 1.5em;
+  border-radius: 25px;
+  width: 10vw;
+  height: 5vh;
+  margin: auto;
+  margin-top: 4vh;
+  cursor: pointer;
+}
+
+.stopPomo{
+  display: block;
+  background: #D11919;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 25px;
+  width: 10vw;
+  height: 5vh;
+  margin: auto;
+  margin-top: 4vh;
+  cursor: pointer;
+}
+
+.timeInput input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 5px solid black;
+  font-size: 7em;
+  width: 7.7vw;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.timeInput input::-webkit-outer-spin-button,
+.timeInput input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.timeInput input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.pomoDescription{
+  display: block;
+  margin: auto;
+  margin-top: 3vh;
+  width: 72vw;
+}
+
+
+
+
+
+/*Reference List Javascript*/
+.addReferences{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.referenceList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newReferences{
+  width: 10vw;
+  height: 5vh;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 25px;
+  margin-right: 2vw;
+  font-size: 1em;
+}
+
+.groupTitle{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 85vw;
+  height: 5vh;
+  padding-left: 4vh;
+  margin-top: 1vh;
+  background-color: #EBA640;
+  border: 2px solid black;
+}
+
+.referenceFront{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.referenceFront h2{
+  margin-right: 5vw;
+}
+
+.openGroup{
+  background-color: transparent;
+}
+
+.openGroup .icon{
+  height: 2.5vh;
+  margin-right: 1vw;
+}
+
+.closeGroup{
+  background-color: transparent;
+}
+
+.closeGroup .icon{
+  height: 2.5vh;
+  margin-right: 1vw;
+}
+
+.addInGroup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85vw;
+  height: 5vh;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px 2px 2px 2px;
+}
+
+.addInGroup .icon{
+  height: 3vh;
+}
+
+.singleReference{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 85vw;
+  height: 5vh;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px 2px 2px 2px;
+  padding-left: 4vh;
+  padding-right: 4vh;
+}
+
+.groupReference{
+  margin-bottom: 4vh;
+}
+
+.newGroupRefForm{
+  width: 30vw;
+  min-height: 28vh;
+  margin-top: -14vh; /* Negative half of height. */
+  margin-left: -15vw; /* Negative half of width. */
+}
+
+.newSingleRefForm{
+  width: 30vw;
+  min-height: 28vh;
+  margin-top: -14vh; /* Negative half of height. */
+  margin-left: -15vw; /* Negative half of width. */
+}
+
+.newSingleRefFormInGroup{
+  width: 30vw;
+  min-height: 28vh;
+  margin-top: -14vh; /* Negative half of height. */
+  margin-left: -15vw; /* Negative half of width. */
+}
+
+
+/*music player css*/
+.musicPlayer {
+  grid-area: musicplayer;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+}
+
+.musicMain{
+  width: 91vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.album img{
+  height: 12vh;
+}
+
+.musicInfo{
+  color: white;
+  padding-left: 1vw;
+}
+
+.musicInfo h2{
+  font-size: 1.2em;
+  margin-bottom: 1vh;
+}
+
+.musicInfo p{
+  font-weight: 400;
+}
+
+/*formats the middle of the middle of the music player*/
+.musicMiddle{
+  width: 15vw;
+  height: 9vh;
+  margin-right: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/*formats the music buttons*/
+.musicButtons{
+  width: 15vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.musicTimer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#slider {
+	width: 15vw;
+	height: 0.5vh;
+	background: white;
+   border-radius: 2px;
+   div {
+      width: 4px;
+      height: 4px;
+      margin-top: 1px;
+      background: #EF6DBC;
+      border-radius: 2px;
+   }
+}
+
+#timer {
+  margin-top: 1vh;
+  color: white;
+  line-height: 0;
+  font-size: 9pt;
+  float: right;
+  font-family: Arial, Sans-Serif;
+}
+
+.playlist{
+  background-color: transparent;
+}
