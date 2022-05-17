@@ -92,7 +92,7 @@
     transform: rotate(225deg);
   }
 
-  /*Creates the invidual boxes inside the nav menu*/
+  /*Creates the individual boxes inside the nav menu*/
   .navbox{
     margin-bottom: -2px; /*Makes it so the borders overlap and don't seem thicker*/
     background-color: #0B6E4F;
@@ -127,10 +127,18 @@
   .main h1{
     padding: 0;
   }
-  
+
+  /*makes reference list content go down*/
   .taskContent{
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+  }
+
+  /*Makes the task column list go down in a column*/
+  .taskContent ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .taskColumn{
@@ -198,28 +206,70 @@
 
   
   /*pomodoro timer css*/
+
+  /*styles the big pomo form*/
   .bigPomo{
-    min-height: 50vh;
+    min-height: 135vh;
   }
   
+  /*styles the little pomo countdown box*/
+  .lilPomo{
+    width: 72vw;
+    min-height: 38vh;
+  }
+
+  .lilPomo h2{
+    text-align: center;
+  }
+
+  /*makes sure the times go down in a column*/
   .times{
     flex-direction: column;
     align-items: center;
   }
 
-  .timeInput label{
-    font-size: 2em;
-    width: 50vw;
+  /*styles the "minutes" and "seconds" underneath the inputs*/
+  .timeInd label{
+    font-size: 1em;
+    margin-left: 5.5vw;
+    margin-bottom: 4vh;
   }
 
+  /*styles the headings for the times and makes sure they go across*/
+  .timeInput h2{
+    width: 70vw;
+    font-size: 2.5em;
+  }
+
+  /*styles the colon*/
+  .timeInput p{
+    font-size: 4em;
+  }
+
+  /*styles the input space for the times*/
   .timeInput input{
     background-color: transparent;
     border: none;
     border-bottom: 5px solid black;
-    font-size: 2em;
-    width: 7.7vw;
+    font-size: 5em;
+    width: 25vw;
   }
 
+  /*styles the start timer button*/
+  .startPomo{
+    font-size: 1.2em;
+    width: 30vw;
+  }
+
+  .stopPomo{
+    font-size: 1.2em;
+    width: 30vw;
+  }
+  
+
+
+
+  
   /*reference list css*/
   .addReferences{
     width: 90vw;

@@ -308,6 +308,7 @@ select{
   cursor: pointer;
 }
 
+/*places the new task column form in the center of the screen and also sets its width*/
 .newTaskColumnForm{
   width: 30vw;
   min-height: 30vh;
@@ -321,42 +322,45 @@ select{
 
 
 /*Pomodoro Timer Page Code*/
+
+/*creates the display of the big pomodoro input times form*/
 .bigPomo{
-  position: static;
-  display: block;
-  margin: auto;
+  position: static; /*changes position to regular css positioning*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 0;
   background-color: #EBA640;
   width: 72vw;
-  height: 50vh;
+  min-height: 50vh;
   border: 2px solid black;
   border-radius: 5px;
   padding: 2vw;
+  margin: auto;
 }
 
+/*formats the spacing of the pomodoro times*/
+.times{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 68vw;
+}
+
+/*creates the display of the little pomodoro countdown box*/
 .lilPomo{
   position: static;
   display: none; /*should be block when not none*/
   margin: auto;
   background-color: #EBA640;
   width: 24vw;
-  height: 50vh;
+  min-height: 50vh;
   border: 2px solid black;
   border-radius: 5px;
   padding: 2vw;
 }
 
-.lilPomo h2{
-  font-size: 3em;
-}
-
-.times{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 68vw;
-  height: 33vh;
-}
-
+/*Formats the little pomodoro countdown box*/
 .timeInput{
   display: flex;
   flex-direction: column;
@@ -365,10 +369,17 @@ select{
   width: 20vw;
 }
 
-.timeInput label{
+/*Styles the title of the little pomodoro boxes*/
+.timeInput h2{
   font-size: 3em;
 }
 
+/*Styles the countdown time text*/
+.timeInput p{
+  font-size: 6.5em;
+}
+
+/*styles the start pomodoro timer button*/
 .startPomo{
   display: block;
   background: white;
@@ -382,6 +393,7 @@ select{
   cursor: pointer;
 }
 
+/*styles the stop pomodoro timer buttons*/
 .stopPomo{
   display: block;
   background: #D11919;
@@ -395,14 +407,16 @@ select{
   cursor: pointer;
 }
 
+/*styles the time inputs for the pomodoro timer*/
 .timeInput input{
   background-color: transparent;
   border: none;
   border-bottom: 5px solid black;
-  font-size: 7em;
-  width: 7.7vw;
+  font-size: 6em;
+  width: 7.8vw;
 }
 
+/*removes the up and down arrows on the number inputs*/
 /* Chrome, Safari, Edge, Opera */
 .timeInput input::-webkit-outer-spin-button,
 .timeInput input::-webkit-inner-spin-button {
@@ -415,6 +429,33 @@ select{
   -moz-appearance: textfield;
 }
 
+/*sets the layout of the minute and second inputs*/
+.timeLayout{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*sets the style of the colon between the minute and second inputs*/
+.timeLayout p{
+  font-size: 3em;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  margin-bottom: 6vh;
+}
+
+/*lays out the minute and second inputs so it's top to bottom*/
+.timeInd{
+  display: flex;
+  flex-direction: column;
+}
+
+/*(kinda) centers the text underneath the input field*/
+.timeInd label{
+  margin-left: 1.8vw;
+}
+
+/*styles the text in the description at the beneath the pomodoro timer*/
 .pomoDescription{
   display: block;
   margin: auto;
