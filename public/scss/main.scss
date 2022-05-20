@@ -51,7 +51,6 @@ button:hover{
     "musicplayer"; 
 
   /*Forces grid to cover entire screen*/
-  width: 100wh; 
   height: 100vh;
 }
 
@@ -628,7 +627,7 @@ select{
 .musicMiddle{
   width: 15vw;
   height: 9vh;
-  margin-right: 15vw;
+  margin-left: 8vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -650,20 +649,24 @@ select{
   align-items: center;
 }
 
+/*styles the timeline*/
 #slider {
 	width: 15vw;
 	height: 0.5vh;
 	background: white;
-   border-radius: 2px;
-   div {
-      width: 4px;
-      height: 4px;
-      margin-top: 1px;
-      background: #EF6DBC;
-      border-radius: 2px;
-   }
+  border-radius: 2px;
 }
 
+/*styles the line that shows percentage of time that has elapsed in the song*/
+#elapsed {
+  width: 0px;
+  height: 0.5vh;
+  margin-top: 1px;
+  background: #0B6E4F;
+  border-radius: 2px;
+}
+
+/*styles the little timer at the bottom of the timeline*/
 #timer {
   margin-top: 1vh;
   color: white;
@@ -671,6 +674,47 @@ select{
   font-size: 9pt;
   float: right;
   font-family: Arial, Sans-Serif;
+}
+
+/*formats the volume bar and icon*/
+.volumeSettings{
+  display:flex;
+  justify-content: row;
+  align-items: flex-end;
+}
+
+/*styles the volume slider*/
+#volume{
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 10vw;
+  height: 0.3vh;
+  background-color: white;
+  margin-left: 1vw;
+}
+
+/*styles the volume slider button thing. code taken from https://www.w3schools.com/howto/howto_js_rangeslider.asp*/
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 1.2vw; /* Set a specific slider handle width */
+  height: 1.2vw; /* Slider handle height */
+  border-radius: 50%; /*Turns handle into a circle*/
+  border-style: solid; /*adds border to handle*/
+  border-width: 1px;
+  background: white; /* color of the handle */
+  cursor: pointer; /* Cursor on hover */
+}
+
+#volume::-moz-range-thumb {
+  width: 1.2vw; /* Set a specific slider handle width */
+  height: 1.2vw; /* Slider handle height */
+  border-radius: 50%; /*Turns handle into a circle*/
+  border-style: solid; /*adds border to handle*/
+  border-width: 1px;
+  background: white; /* color of the handle */
+  cursor: pointer; /* Cursor on hover */
 }
 
 .playlist{

@@ -1,153 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel = "stylesheet" href = "scss/main.scss">
-        <title>Studbud</title>
-        <link rel="icon" type="image/x-icon" href="images/Logo.png"> <!--adds favicon to page-->
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "scss/main.scss">
+    <title>Studbud Reference List</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo.png"> <!--adds favicon to page-->
+</head>
 
-        <!--Mobile navbar. Outside of header so it can cover the whole page-->
-        <div class="menu">
-          <a class="navbox" href="index.html">Your Tasks</a>
-          <a class="navbox" href="pomodoro.html">Pomodoro Timer</a>
-          <a class="navbox" href="reading.html">Reading List</a>
-        </div>
-      
-        <!--Creates hamburger menu -->
-        <div class="menu-toggle">
-          <span></span>
-        </div>
-      
-        <div class="grid-container">
-      
-          <div class="header">
-            <a href="index.html">
-              <img src="images/Logo.png" alt="Studbud Logo">
-            </a>
-      
-            <div class="navlinks">
-              <a href="index.html">Your Tasks</a>
-              <a href="pomodoro.html">Pomodoro Timer</a>
-              <a href="reading.html">Reading List</a>
+<body>
+
+  <!--Mobile navbar. Outside of header so it can cover the whole page-->
+  <div class="menu">
+    <a class="navbox" href="index.html">Your Tasks</a>
+    <a class="navbox" href="pomodoro.html">Pomodoro Timer</a>
+    <a class="navbox" href="reading.html">Reading List</a>
+  </div>
+
+  <!--Creates hamburger menu -->
+  <div class="menu-toggle">
+    <span></span>
+  </div>
+
+  <div class="grid-container">
+
+    <div class="header">
+      <a href="index.html">
+        <img src="images/Logo.png" alt="Studbud Logo">
+      </a>
+
+      <div class="navlinks">
+        <a href="index.html">Your Tasks</a>
+        <a href="pomodoro.html">Pomodoro Timer</a>
+        <a href="reading.html">Reading List</a>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="main">
+      <h1>Reference List</h1>
+
+      <div class="addReferences">
+        <button class="newReferences" id="newGroup">Add New Group</button>
+        <button class="newReferences" id="newSingle">Add New Single</button>
+      </div>
+
+      <!-- unordered list where reference list is-->
+      <ul class="referenceList">
+
+        <!--
+        <div class="groupReference">
+          <div class="groupTitle">
+            <div class="referenceFront">
+              <h2>Name of Group Reference</h2>
+              <a href="#">open all links</a>
             </div>
-      
-      
-      
+            <button class = "openGroup">
+              <img class="icon" src="images/OpenArrow.png" alt="Opened Group Reference Icon">
+            </button>
           </div>
-      
-      
-          <div class="main">
-            <h1>Reference List</h1>
-      
-            <div class="addReferences">
-              <button class="newReferences" id="newGroup">Add New Group</button>
-              <button class="newReferences" id="newSingle">Add New Single</button>
+
+          <button class="addInGroup">
+            <img class="icon" src="images/Add.png" alt="Add New Reference in Group Icon">
+          </button>
+        </div>
+        -->
+        
+        <!--
+        <div class="groupReference">
+          <div class="singleReference">
+            <div class="referenceFront">
+              <h2>Name of Individual Reference</h2>
+              <p>https://notarealwebsite.com</p>
             </div>
-      
-            <!-- unordered list where reference list is-->
-            <ul class="referenceList">
-      
-              <!--
-              <div class="groupReference">
-                <div class="groupTitle">
-                  <div class="referenceFront">
-                    <h2>Name of Group Reference</h2>
-                    <a href="#">open all links</a>
-                  </div>
-                  <button class = "openGroup">
-                    <img class="icon" src="images/OpenArrow.png" alt="Opened Group Reference Icon">
-                  </button>
-                </div>
-      
-                <button class="addInGroup">
-                  <img class="icon" src="images/Add.png" alt="Add New Reference in Group Icon">
-                </button>
-              </div>
-              -->
-              
-              <!--
-              <div class="groupReference">
-                <div class="singleReference">
-                  <div class="referenceFront">
-                    <h2>Name of Individual Reference</h2>
-                    <p>https://notarealwebsite.com</p>
-                  </div>
-                  <a href="#">open</a>
-                </div>
-              </div>
-              -->
-              
-            </ul>
-      
-      
-            <!--Add New Group Reference Form-->
-            <form class="newGroupRefForm">
-              <h2>Add New Group Reference</h2>
-              <button type="button" class="newTaskOut" id="closeGroupRefForm">
-                <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
-              </button>
-              <div>
-                <label for="groupRefName">Name of Group Reference</label><br>
-                <input class="fullIn" type="text" id="groupRefName" name="groupRefName"><br>
-      
-                <input type="submit" id="groupRefSubmit" class="addSubmit" value="Add">
-              </div>
-            </form>
-      
-      
-            <!--Add New Single Reference on Page form-->
-            <form class="newSingleRefForm">
-              <h2>Add New Reference</h2>
-              <button type="button" class="newTaskOut" id="closeSingleRefForm">
-                <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
-              </button>
-              <div>
-                <label for="singleRefName">Name of Reference</label><br>
-                <input class="fullIn" type="text" id="singleRefName" name="singleRefName"><br>
-      
-                <label for="urlName">URL of Reference</label><br>
-                <input class="fullIn" type="text" id="urlName" name="urlName"><br>
-                
-                <input type="submit" id="singleRefSubmit" class="addSubmit" value="Add">
-              </div>
-            </form>
-      
-            <!--Add New Single Reference in Group Reference form. Looks the same in html, but exists to make javscript easier-->
-            <form class="newSingleRefFormInGroup">
-              <h2>Add New Reference</h2>
-              <button type="button" class="newTaskOut" id="closeSingleRefInGroupForm">
-                <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
-              </button>
-              <div>
-                <label for="singleRefInGroupName">Name of Reference</label><br>
-                <input class="fullIn" type="text" id="singleRefInGroupName" name="singleRefInGroupName"><br>
-      
-                <label for="urlNameInGroup">URL of Reference</label><br>
-                <input class="fullIn" type="text" id="urlNameInGroup" name="urlNameInGroup"><br>
-                
-                <input type="submit" id="singleRefInGroupSubmit" class="addSubmit" value="Add">
-              </div>
-            </form>
-      
-          </div>
-      
-      
-      
-          <div class="musicPlayer">
-            <h2>Music</h2>
-      
-      
-      
+            <a href="#">open</a>
           </div>
         </div>
-      
-      
-        <script src="reading.js"></script>
-      </body>
+        -->
+        
+      </ul>
+
+
+      <!--Add New Group Reference Form-->
+      <form class="newGroupRefForm">
+        <h2>Add New Group Reference</h2>
+        <button type="button" class="newTaskOut" id="closeGroupRefForm">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="groupRefName">Name of Group Reference</label><br>
+          <input class="fullIn" type="text" id="groupRefName" name="groupRefName"><br>
+
+          <input type="submit" id="groupRefSubmit" class="addSubmit" value="Add">
+        </div>
+      </form>
+
+
+      <!--Add New Single Reference on Page form-->
+      <form class="newSingleRefForm">
+        <h2>Add New Reference</h2>
+        <button type="button" class="newTaskOut" id="closeSingleRefForm">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="singleRefName">Name of Reference</label><br>
+          <input class="fullIn" type="text" id="singleRefName" name="singleRefName"><br>
+
+          <label for="urlName">URL of Reference</label><br>
+          <input class="fullIn" type="text" id="urlName" name="urlName"><br>
+          
+          <input type="submit" id="singleRefSubmit" class="addSubmit" value="Add">
+        </div>
+      </form>
+
+      <!--Add New Single Reference in Group Reference form. Looks the same in html, but exists to make javscript easier-->
+      <form class="newSingleRefFormInGroup">
+        <h2>Add New Reference</h2>
+        <button type="button" class="newTaskOut" id="closeSingleRefInGroupForm">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="singleRefInGroupName">Name of Reference</label><br>
+          <input class="fullIn" type="text" id="singleRefInGroupName" name="singleRefInGroupName"><br>
+
+          <label for="urlNameInGroup">URL of Reference</label><br>
+          <input class="fullIn" type="text" id="urlNameInGroup" name="urlNameInGroup"><br>
+          
+          <input type="submit" id="singleRefInGroupSubmit" class="addSubmit" value="Add">
+        </div>
+      </form>
+
+    </div>
+
+
+
+    <div class="musicPlayer">
+      <!--album cover portion of music player-->
+      <div class="album">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
+      </div>
+
+      <!--Rest of the things on the music player-->
+      <div class="musicMain">
+        <!--The song and artist names section-->
+        <div class="musicInfo">
+          <h2 id="songName">Welcome to the Black Parade</h2>
+          <p id="artist">My Chemical Romance</p>
+        </div>
+
+        <!--The middle portion of the music player-->
+        <div class="musicMiddle">
+          <!--where the music comes from-->
+          <audio src="music/Welcome To The Black Parade.mp3" id="song1"></audio>
+          <audio src="music/The Sharpest Lives.mp3" id="song2"></audio>
+          <audio src="music/I Don't Love You.mp3" id="song3"></audio>
+
+
+          
+          <!--The pause, play, next song, and previous song buttons section-->
+          <div class="musicButtons">
+            <button class="icon" id="prevSong">
+              <img class="icon" src="images/PreviousSong.png" alt="Previous Song Icon">
+            </button>
+
+            <button class="icon" id="play">
+              <img class="icon" src="images/Play.png" alt="Play Song Icon">
+            </button>
+
+            <button class="icon" id="pause">
+              <img class="icon" src="images/Pause.png" alt="Pause Song Icon">
+            </button>
+
+            <button class="icon" id="nextSong">
+              <img class="icon" src="images/NextSong.png" alt="Next Song Icon">
+            </button>
+
+          </div>
+
+          <!--timeline that shows how far along a song you are-->
+          <div class="musicTimer">
+            <!--html for music elapsed timeline. Code from https://codepen.io/ozzie/pen/YPOBEJ-->
+            <div id="slider">
+              <div id="elapsed"></div>
+            </div>
+            <p id="timer">0:00</p>
+          </div>
+        </div>
+
+        <!--Volume slider for the music player-->
+        <div class = "volumeSettings">
+          <img class = "icon" src = "images/Volume.png" alt = "volumn icon">
+          <input id = "volume" type="range" min="1" max="100"></input>
+        </div>
+
+        <!--Playlist button-->
+        <button class="playlist">
+          <img class="icon" src="images/Playlist.png" alt="Playlist Icon">
+        </button>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+  <script src="reading.js"></script>
+</body>
+
 </html>

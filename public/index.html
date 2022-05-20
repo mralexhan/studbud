@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "scss/main.scss">
-    <title>Studbud</title>
+    <title>Studbud Task List</title>
     <link rel="icon" type="image/x-icon" href="images/Logo.png"> <!--adds favicon to page-->
 </head>
 
@@ -167,19 +167,22 @@
       <div class="musicMain">
         <!--The song and artist names section-->
         <div class="musicInfo">
-          <h2>Welcome to the Black Parade</h2>
-          <p>My Chemical Romance</p>
+          <h2 id="songName">Welcome to the Black Parade</h2>
+          <p id="artist">My Chemical Romance</p>
         </div>
 
         <!--The middle portion of the music player-->
         <div class="musicMiddle">
           <!--where the music comes from-->
-          <audio id="music" preload="auto" loop="false">
-            <source src="music/05 Welcome To The Black Parade.mp3" type="audio/mp3">
-          </audio>
+          <audio src="music/Welcome To The Black Parade.mp3" id="song1"></audio>
+          <audio src="music/The Sharpest Lives.mp3" id="song2"></audio>
+          <audio src="music/I Don't Love You.mp3" id="song3"></audio>
+
+
+          
           <!--The pause, play, next song, and previous song buttons section-->
           <div class="musicButtons">
-            <button class="icon">
+            <button class="icon" id="prevSong">
               <img class="icon" src="images/PreviousSong.png" alt="Previous Song Icon">
             </button>
 
@@ -191,7 +194,7 @@
               <img class="icon" src="images/Pause.png" alt="Pause Song Icon">
             </button>
 
-            <button class="icon">
+            <button class="icon" id="nextSong">
               <img class="icon" src="images/NextSong.png" alt="Next Song Icon">
             </button>
 
@@ -205,6 +208,12 @@
             </div>
             <p id="timer">0:00</p>
           </div>
+        </div>
+
+        <!--Volume slider for the music player-->
+        <div class = "volumeSettings">
+          <img class = "icon" src = "images/Volume.png" alt = "volumn icon">
+          <input id = "volume" type="range" min="1" max="100"></input>
         </div>
 
         <!--Playlist button-->
