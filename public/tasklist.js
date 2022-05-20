@@ -1,17 +1,5 @@
-//import "./components/navmenu";
-
-/*javascript for the nav bar to be able to activate. Code from https://codepen.io/robdongas/pen/MWvKMRp*/
-const toggler = document.querySelector('.menu-toggle');
-const menu = document.querySelector('.menu');
-
-/*
- * Toggles on and off the 'active' class on the menu
- * and the toggler button.
- */
-toggler.addEventListener('click', () => {
-  toggler.classList.toggle('active');
-  menu.classList.toggle('active');
-})
+import "./components/navmenu.js";
+import "./components/musicplayer.js";
 
 
 
@@ -169,7 +157,7 @@ function renderTask(task) {
   let delButton = document.createElement("button");
   let delButtonImg = document.createElement("img"); //creates image in document
   delButtonImg.classList.add("icon"); //adds class "icon" to image
-  delButtonImg.src = "images/Trashcan.png"; //sets image src
+  delButtonImg.src = require("./images/Trashcan.png"); //sets image src
   delButtonImg.alt = "Delete Task Card Icon";
   delButton.appendChild(delButtonImg); //puts image under the html button container
   taskCardIcons.appendChild(delButton);
@@ -177,13 +165,13 @@ function renderTask(task) {
   let compNoButton = document.createElement("button");
   let compNoButtonImg = document.createElement("img");
   compNoButtonImg.classList.add("icon");
-  compNoButtonImg.src = "images/CompNo.png";
+  compNoButtonImg.src = require("./images/CompNo.png");
   compNoButtonImg.alt = "Task Not Completed Icon";
   compNoButton.appendChild(compNoButtonImg);
   let compYesButton = document.createElement("button");
   let compYesButtonImg = document.createElement("img");
   compYesButtonImg.classList.add("icon");
-  compYesButtonImg.src = "images/CompYes.png";
+  compYesButtonImg.src = require("./images/CompYes.png");
   compYesButtonImg.alt = "Task Completed Icon";
   compYesButton.appendChild(compYesButtonImg);
   //adds buttons to icon secton div
@@ -275,7 +263,7 @@ function renderTaskColumn(taskcolumn) {
   taskOutButton.classList.add("taskOut");
   let taskOutImg = document.createElement("img");
   taskOutImg.classList.add("icon");
-  taskOutImg.src = "images/Remove.png";
+  taskOutImg.src = require("./images/Remove.png");
   taskOutImg.alt = "Remove Task Column Icon";
   taskOutButton.appendChild(taskOutImg);
   taskColumn.appendChild(taskOutButton);
@@ -289,7 +277,7 @@ function renderTaskColumn(taskcolumn) {
   addTaskButton.classList.add("taskAdd");
   let addTaskButtonIcon = document.createElement("img");
   addTaskButtonIcon.classList.add("icon");
-  addTaskButtonIcon.src = "images/Add.png";
+  addTaskButtonIcon.src = require("./images/Add.png");
   addTaskButtonIcon.alt = "Add Task Button Icon"
   addTaskButton.appendChild(addTaskButtonIcon);
   taskColumn.appendChild(addTaskButton);
@@ -392,76 +380,3 @@ if (localStorage.length != 0){
     //}
   }
 }*/
-
-
-
-
-
-
-/*javascript for music player*/
-
-/*code modified from https://codepen.io/ozzie/pen/YPOBEJ*/
-
-//counts number of songs on the page
-var numSongs = document.querySelectorAll("audio").length;
-
-var songIndex = 1;
-
-var music = document.getElementById("song" + songIndex);
-var playButton = document.getElementById("play");
-var pauseButton = document.getElementById("pause");
-var playhead = document.getElementById("elapsed");
-var timeline = document.getElementById("slider");
-var timer = document.getElementById("timer");
-var duration = music.duration;
-var volumeSlider = document.getElementById("volume");
-var prevSong = document.getElementById("prevSong");
-var nextSong = document.getElementById("nextSong");
-pauseButton.style.display = "none";
-
-//runs the timeupdate function whenever the music is updated
-music.addEventListener("timeupdate", timeUpdate, false);
-
-//updates the timer and timeline when music is playinh
-function timeUpdate() {
-
-  //grabs percentage of song that has been played
-	var playPercent = (music.currentTime / duration) * 100;
-
-  //sets the width of the line that shows how much has been played based on percentage
-	playhead.style.width = ((playPercent * 0.01) * timeline.offsetWidth) + "px";
-
-  //checks how many minutes and seconds have been played
-	var secondsIn = Math.floor(music.currentTime%60);
-  var minutesIn = Math.floor(music.currentTime/60);
-
-  //updates the little timer underneath the bar based on how much of the song has been played
-	timer.innerHTML = String(minutesIn).padStart(2, "0") + ":" + String(secondsIn).padStart(2, "0");
-
-  
-}
-
-//hides play button and shows pause button when play button is clicked
-playButton.onclick = function() {
-	music.play();
-	playButton.style.display = "none";
-	pause.style.display = "initial";
-}
-
-//hides pause button and shows play button when pause button is clicked
-pauseButton.onclick = function() {
-	music.pause();
-	playButton.style.display = "initial";
-	pause.style.display = "none";
-}
-
-
-music.addEventListener("canplaythrough", function () {
-	duration = music.duration;
-}, false);
-
-
-//volume slider javascript. ccode from https://stackoverflow.com/questions/62160275/js-audio-volume-slider
-volumeSlider.addEventListener("change", function(e){
-  music.volume = e.currentTarget.value/100;
-})
