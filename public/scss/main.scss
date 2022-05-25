@@ -3,6 +3,11 @@
 @import "layout.scss";
 @import "screen.scss";
 
+/*hides the scroll bars*/
+body{
+  overflow: hidden;
+}
+
 /*sets css for all forms on website*/
 form{
   display: none;
@@ -57,9 +62,6 @@ button:hover{
 /*header css*/
 .header {
   grid-area: header;
-  /*position: fixed;
-  height: 15vh;
-  width: 100vw;*/
   background-color: #0B6E4F;
   display: flex;
   flex-direction: row;
@@ -598,6 +600,7 @@ select{
 }
 
 .musicMain{
+  z-index: 999;
   width: 91vw;
   display: flex;
   flex-direction: row;
@@ -605,8 +608,9 @@ select{
   align-items: center;
 }
 
-.album img{
-  height: 12vh;
+.album{
+  width: auto;
+  height: 100%;
 }
 
 .musicInfo{
@@ -614,20 +618,16 @@ select{
   padding-left: 1vw;
 }
 
-.musicInfo h2{
-  font-size: 1.2em;
-  margin-bottom: 1vh;
-}
-
-.musicInfo p{
-  font-weight: 400;
-}
-
-/*formats the middle of the middle of the music player*/
+/*formats the middle of the music player*/
 .musicMiddle{
+  /*centers the music middle in the middle of the screen*/
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;  
   width: 15vw;
   height: 9vh;
-  margin-left: 8vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -678,7 +678,9 @@ select{
 
 /*formats the volume bar and icon*/
 .volumeSettings{
-  display:flex;
+  position: absolute;
+  left: 70vw;
+  display: flex;
   justify-content: row;
   align-items: flex-end;
 }
@@ -717,6 +719,56 @@ select{
   cursor: pointer; /* Cursor on hover */
 }
 
-.playlist{
+.playlistButton{
   background-color: transparent;
+}
+
+/*styles the pop out section that actually contains all the songs*/
+.songList{
+  z-index: 998;
+  position: absolute;
+  right: -25vw;
+  top: 0;
+  width: 25vw;
+  height: 100vh;
+  background-color: black;
+  transition-property: right;
+  transition-duration: 0.2s;
+}
+
+/*positions the songlist into the screen when it is clicked*/
+.songList.active{
+  right: 0;
+}
+
+/*styles and lays out each song box*/
+.songs{
+  width: 25vw;
+  height: 12vh;
+  background-color: transparent;
+  display: flex;
+  flex-postition: row;
+  align-items: center;
+  border-style: solid;
+  border-width: 0px 0px 0.25px 0px; /*adds border on the bottom of each song box*/
+  border-color: white;
+  font-size: 1em;
+  font-weight: 550;
+  color: white;
+}
+
+.songInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 1vw;
+}
+
+.songName{
+  font-size: 1.2em;
+  margin-bottom: 1vh;
+}
+
+.artistName{
+  font-weight: 400;
 }

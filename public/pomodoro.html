@@ -148,28 +148,21 @@
     </div>
 
 
+    <!--HTML for music player-->
     <div class="musicPlayer">
       <!--album cover portion of music player-->
-      <div class="album">
-        <img src="https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
-      </div>
+      <img class="album" src="https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
 
       <!--Rest of the things on the music player-->
       <div class="musicMain">
         <!--The song and artist names section-->
         <div class="musicInfo">
-          <h2 id="songName">Welcome to the Black Parade</h2>
-          <p id="artist">My Chemical Romance</p>
+          <h2 class = "songName" id = "currentSongName">Welcome to the Black Parade</h2>
+          <p class = "artistName" id = "currentArtist">My Chemical Romance</p>
         </div>
 
         <!--The middle portion of the music player-->
         <div class="musicMiddle">
-          <!--where the music comes from-->
-          <audio src="music/Welcome To The Black Parade.mp3" id="song1"></audio>
-          <audio src="music/The Sharpest Lives.mp3" id="song2"></audio>
-          <audio src="music/I Don't Love You.mp3" id="song3"></audio>
-
-
           
           <!--The pause, play, next song, and previous song buttons section-->
           <div class="musicButtons">
@@ -207,20 +200,50 @@
           <input id = "volume" type="range" min="1" max="100"></input>
         </div>
 
+
         <!--Playlist button-->
-        <button class="playlist">
+        <button class="playlistButton">
           <img class="icon" src="images/Playlist.png" alt="Playlist Icon">
         </button>
       </div>
-
-
-
-
     </div>
+
+    <!--box that contains all the songs the user can play-->
+    <ul class = "songList">
+        <!--where the music comes from-->
+        <button type = "button" class = "songs">
+          <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">  
+          <span class = "songInfo">
+            <span class = "songName">Welcome to the Black Parade</span>
+            <span class = "artistName">My Chemical Romance</span>
+          </span>
+          <audio src="music/Welcome To The Black Parade.mp3" id="song1"></audio>
+        </button>
+
+        <button type = "button" class = "songs">
+          <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
+          <span class = "songInfo">
+            <span class = "songName">The Sharpest Lives</span>
+            <span class = "artistName">My Chemical Romance</span>
+          </span>
+          <audio src="music/The Sharpest Lives.mp3" id="song2"></audio>
+        </button>
+
+        <button type = "button" class = "songs">
+          <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
+          <span class = "songInfo">
+            <span class = "songName">I Don't Love You</span>
+            <span class = "artistName">My Chemical Romance</span>
+          </span>
+          <audio src="music/I Don't Love You.mp3" id="song3"></audio>
+        </button>
+
+
+    </ul>
 
   </div>
 
 
-  <script src="pomodoro.js" type = "module"></script>
+  <script type = "module" src="pomodoro.js"></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 @media only screen and (max-width: 450px){
 
+  /*body{
+    height: auto;
+  }*/
+
   /*Removes the browser nav bar*/
   .navlinks{
     display: none;
@@ -13,8 +17,8 @@
     color: black;
     background: #0B6E4F;
     width: 60vw;
-    padding-top: 75px;
-    height: 100%;
+    padding-top: 15vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -97,7 +101,7 @@
     margin-bottom: -2px; /*Makes it so the borders overlap and don't seem thicker*/
     background-color: #0B6E4F;
     width: 100%;
-    height: 50px;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -185,17 +189,17 @@
 
   .newTaskForm{
     width: 80vw;
-    margin-left: -42vw;
+    margin-left: -40vw;
   }
 
   .newTaskForm{
     width: 80vw;
-    margin-left: -42vw;
+    margin-left: -40vw;
   }
 
   .newTaskColumnForm{
     width: 80vw;
-    margin-left: -42vw;
+    margin-left: -40vw;
   }
   
   .addSubmit{
@@ -321,24 +325,28 @@
   /*all these need their own css because the different margin sizes in their web form css overwrites the default form css if we were to try implementing that*/
   .newGroupRefForm{
     width: 80vw;
-    margin-left: -42vw;
+    margin-left: -40vw;
   }
 
   .newSingleRefForm{
     width: 80vw;
-    margin-left: -42vw;
+    margin-left: -40vw;
   }
 
   .newSingleRefFormInGroup{
     width: 80vw;
-    margin-left: -42vw;
+    margin-left: -40vw;
   }
 
 
 
   /*music player css*/
-  .musicInfo h2{
+  .songName{
     font-size: 1em;
+  }
+
+  .artistName{
+    font-size: 0.8em;
   }
 
   .musicMiddle{
