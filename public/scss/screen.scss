@@ -1,19 +1,18 @@
+/*small screen css starts here*/
+
 @media only screen and (max-width: 450px){
 
-  /*body{
-    height: auto;
-  }*/
-
   /*Removes the browser nav bar*/
-  .navlinks{
+  .header .navlinks{
     display: none;
   }
 
   /*Creates a nav bar hidden in the right side of the screen. Code from https://codepen.io/robdongas/pen/MWvKMRp*/
   .menu{
     position: absolute;
+    top: 0;
     right: -60vw;
-    z-index: 998;
+    z-index: 996;
     color: black;
     background: #0B6E4F;
     width: 60vw;
@@ -46,7 +45,7 @@
     position: absolute;
     top: 5vh;
     right: 5vw;
-    z-index: 999;
+    z-index: 997;
     height: 5vh;
     width: 8vw;
     outline: none;
@@ -116,10 +115,6 @@
   .navbox:hover{
     background-color: #EBA640;
     color: black;
-  }
-
-  .header a{
-    font-size: 0em;
   }
   
   .main{
@@ -345,10 +340,22 @@
     font-size: 1em;
   }
 
+  .songs{
+    width: 60vw;
+  }
+  
+  .songList{
+    right: -60vw;
+  }
+
   .artistName{
     font-size: 0.8em;
   }
 
+  .musicMain{
+    width: 85vw;
+    padding-right: 10vw;
+  }
   .musicMiddle{
     display: none;
   }

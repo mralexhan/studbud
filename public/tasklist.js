@@ -27,12 +27,10 @@ var taskColumnArray = [];
 }*/
 
 
-document.getElementById("taskColumnAdd").addEventListener("click", showAddTaskColumnForm);
-document.getElementById("newTaskColumnOut").addEventListener("click", closeAddTaskColumnForm);
+//task card js
+
 document.getElementById("taskAdd").addEventListener("click", showAddTaskForm);
 document.getElementById("newTaskOut").addEventListener("click", closeAddTaskForm);
-
-
 
 //grabs the information from the new task form when user clicks submit button
 taskForm.addEventListener("submit", function(event) {
@@ -41,38 +39,26 @@ taskForm.addEventListener("submit", function(event) {
   let dueDate = taskDueInput.value;
   let estimatedTime = taskCompInput.value;
   let priorityRating = taskPriorityInput.options[taskPriorityInput.selectedIndex].value;
-  /* if (task) {
-    addTask(task, dueDate, estimatedTime, priorityRating, false);
-  } */
-  addTask(task, dueDate, estimatedTime, priorityRating, false);
+  addTask(task, dueDate, estimatedTime, priorityRating, false, null);
 })
 
-taskColumnForm.addEventListener("submit", function(event){
-  event.preventDefault();
-  let columnName = taskColumnName.value;
-  let columnColor = colorpicker.value;
-  addTaskColumn(columnName, columnColor);
-})
-
+//makes add task form appear
 function showAddTaskForm() {
   document.querySelector(".newTaskForm").style.display = "initial";
 }
 
+//makes add task form disappear
 function closeAddTaskForm() {
   document.querySelector(".newTaskForm").style.display = "none";
 }
 
-function showAddTaskColumnForm() {
-  document.querySelector(".newTaskColumnForm").style.display = "initial";
-}
-
-function closeAddTaskColumnForm() {
-  document.querySelector(".newTaskColumnForm").style.display = "none";
-}
-
-function addTask(taskName, dueDate, estimatedTime, priorityRating, completionStatus) {
+//creates a task object based on the information from form
+function addTask(taskName, dueDate, estimatedTime, priorityRating, completionStatus, location) {
   let d = new Date();
   let dateCreated = d.getFullYear();
+  if (location == null){
+    let location = tasklist.parentNode.children[0].innerHTML;
+  }
   let task = {
     id: Date.now(),
     taskName,
@@ -80,12 +66,206 @@ function addTask(taskName, dueDate, estimatedTime, priorityRating, completionSta
     dateCreated,
     estimatedTime,
     priorityRating,
-    completionStatus
+    completionStatus,
+    location
   };
   taskListArray.push(task);
   renderTask(task);
 }
 
+//renders the task card on the screen
+function renderTask(task) {
+  //checks task location
+  let columnOnPage = document.querySelectorAll(".taskColumn");
+  for (let i = 0; i < columnOnPage.length; i++){
+    console.log(columnOnPage[i])
+    if (task.location == columnOnPage[i].firstChild.innerHTML){
+      //create HTML elements
+
+      //creates task card div
+      let taskCard = document.createElement("div"); 
+      taskCard.setAttribute("data-id", task.id);
+      taskCard.classList.add("taskCard");
+    
+      //creates task card title div
+      let taskCardTitle = document.createElement("div");
+      taskCardTitle.classList.add("taskCardTitle")
+      //creates task card header (h3)
+      let taskCardHeader = document.createElement("h3");
+      taskCardHeader.innerHTML = task.taskName;
+      taskCardTitle.appendChild(taskCardHeader); //adds h3 to taskCardTitle div
+      taskCard.appendChild(taskCardTitle); //adds taskCardTitle to taskCard div
+    
+      //creates taskCardInfo div
+      let taskCardInfo = document.createElement("div");
+      taskCardInfo.classList.add("taskCardInfo");
+      //creates text for the different task information
+      let dueDate = document.createElement("p");
+      dueDate.innerHTML = "Due Date: " + task.dueDate;
+      let priorityRating = document.createElement("p");
+    
+      //javascript for priority
+      let priorityColor = document.createElement("span");
+      let priorityText = task.priorityRating.substring(0,1).toUpperCase() + task.priorityRating.substring(1); //capitalizes the priority text
+      priorityColor.insertAdjacentText("afterbegin", priorityText); //adds text to the span element
+      //changes priority text color based on what value it is
+      if (task.priorityRating == "low"){
+        priorityColor.classList.add("pLow");
+      }
+      if (task.priorityRating == "medium"){
+        priorityColor.classList.add("pMedium");
+      }
+      if (task.priorityRating == "high"){
+        priorityColor.classList.add("pHigh");
+      }
+      priorityRating.innerHTML = "Priority Rating: ";
+      priorityRating.appendChild(priorityColor);
+    
+      //estimated time javascript
+      let estimatedTime = document.createElement("p");
+      let totalMinutes = task.estimatedTime;
+      let hours = Math.floor(totalMinutes / 60);
+      let minutes = totalMinutes % 60;
+      estimatedTime.innerHTML = "Est. Time to Complete: " + hours + "H" + minutes +"M";
+      
+      taskCardInfo.appendChild(dueDate);
+      taskCardInfo.appendChild(priorityRating);
+      taskCardInfo.appendChild(estimatedTime);
+      taskCard.appendChild(taskCardInfo);
+    
+      //creates the icon section of the task card
+      let taskCardIcons = document.createElement("div");
+      taskCardIcons.classList.add("taskCardIcons");
+      //creates a delete button for the task
+      let delButton = document.createElement("button");
+      let delButtonImg = document.createElement("img"); //creates image in document
+      delButtonImg.classList.add("icon"); //adds class "icon" to image
+      delButtonImg.src = require("./images/Trashcan.png"); //sets image src
+      delButtonImg.alt = "Delete Task Card Icon";
+      delButton.appendChild(delButtonImg); //puts image under the html button container
+      taskCardIcons.appendChild(delButton);
+      //creates completion buttons for the task
+      let compNoButton = document.createElement("button");
+      let compNoButtonImg = document.createElement("img");
+      compNoButtonImg.classList.add("icon");
+      compNoButtonImg.src = require("./images/CompNo.png");
+      compNoButtonImg.alt = "Task Not Completed Icon";
+      compNoButton.appendChild(compNoButtonImg);
+      let compYesButton = document.createElement("button");
+      let compYesButtonImg = document.createElement("img");
+      compYesButtonImg.classList.add("icon");
+      compYesButtonImg.src = require("./images/CompYes.png");
+      compYesButtonImg.alt = "Task Completed Icon";
+      compYesButton.appendChild(compYesButtonImg);
+      //adds buttons to icon secton div
+      taskCardIcons.appendChild(compNoButton);
+      taskCardIcons.appendChild(compYesButton);
+      taskCard.appendChild(taskCardIcons);
+    
+      //makes compYesButton invisible by default
+      compYesButton.style.display = "none";
+      //Puts the tasklist into the unlisted list in the taskColumn
+      tasklist.appendChild(taskCard);
+    
+    
+      //clears the input form
+      taskForm.reset();
+      //makes the form disappear from the screen
+      taskForm.style.display = "none";
+    
+      
+    
+      //writes task object to local storage
+      let taskObject = {
+        "id": task.id,
+        "taskName": task.taskName,
+        "dueDate": task.dueDate,
+        "dateCreated": task.dateCreated,
+        "estimatedTime": task.estimatedTime,
+        "priorityRating": task.priorityRating,
+        "completionStatus": task.completionStatus,
+        "taskLocation": task.location
+      }
+    
+      let tasks;
+    
+      //if nothing is in the localstorage tasks list, then creates an empty array to indicate that
+      if(localStorage.getItem("tasks") == null){
+        tasks = [];
+      }
+      //else, save the task into local storage under tasks
+      else{
+        tasks = localStorage.getItem("tasks");
+        tasks = JSON.parse(tasks);
+      }
+    
+      let existingTask = tasks.find(function(task){
+        return task.id === tasks.id;
+      })
+    
+      if(!existingTask){
+        tasks.push(taskObject);
+        let taskJSON = JSON.stringify(tasks);
+        localStorage.setItem("tasks", taskJSON);
+      }
+    
+      
+      
+      //removes the task when delButton is pressed
+      delButton.addEventListener("click", function(event){
+        event.preventDefault();
+        taskCard.remove();
+        localStorage.removeItem(tasks)
+      })
+    
+    
+      /*toggles between compNoButton and compYesButton when you click them*/
+      compNoButton.addEventListener("click", function(event){
+        event.preventDefault();
+        compYesButton.style.display = "initial";
+        compNoButton.style.display = "none";
+        task.completionStatus = true;
+      })
+    
+      compYesButton.addEventListener("click", function(event){
+        event.preventDefault();
+        compYesButton.style.display = "none";
+        compNoButton.style.display = "initial";
+        task.completionStatus = false;
+      })
+      
+    }
+  }
+  
+}
+
+
+
+
+//task column js
+
+document.getElementById("taskColumnAdd").addEventListener("click", showAddTaskColumnForm);
+document.getElementById("newTaskColumnOut").addEventListener("click", closeAddTaskColumnForm);
+
+//saves information from add task column form into variables
+taskColumnForm.addEventListener("submit", function(event){
+  event.preventDefault();
+  let columnName = taskColumnName.value;
+  let columnColor = colorpicker.value;
+  addTaskColumn(columnName, columnColor);
+})
+
+//makes add task column form appear
+function showAddTaskColumnForm() {
+  document.querySelector(".newTaskColumnForm").style.display = "initial";
+}
+
+//makes add task column form disappear
+function closeAddTaskColumnForm() {
+  document.querySelector(".newTaskColumnForm").style.display = "none";
+}
+
+//creates a task column object based on the information from form
 function addTaskColumn(columnName, columnColor){
   let taskcolumn = {
     id: Date.now(),
@@ -96,158 +276,7 @@ function addTaskColumn(columnName, columnColor){
   renderTaskColumn(taskcolumn);
 }
 
-function renderTask(task) {
-  //create HTML elements
-
-  //creates task card div
-  let taskCard = document.createElement("div"); 
-  taskCard.setAttribute("data-id", task.id);
-  taskCard.classList.add("taskCard");
-
-  //creates task card title div
-  let taskCardTitle = document.createElement("div");
-  taskCardTitle.classList.add("taskCardTitle")
-  //creates task card header (h3)
-  let taskCardHeader = document.createElement("h3");
-  taskCardHeader.innerHTML = task.taskName;
-  taskCardTitle.appendChild(taskCardHeader); //adds h3 to taskCardTitle div
-  taskCard.appendChild(taskCardTitle); //adds taskCardTitle to taskCard div
-
-  //creates taskCardInfo div
-  let taskCardInfo = document.createElement("div");
-  taskCardInfo.classList.add("taskCardInfo");
-  //creates text for the different task information
-  let dueDate = document.createElement("p");
-  dueDate.innerHTML = "Due Date: " + task.dueDate;
-  let priorityRating = document.createElement("p");
-
-  //javascript for priority
-  let priorityColor = document.createElement("span");
-  let priorityText = task.priorityRating.substring(0,1).toUpperCase() + task.priorityRating.substring(1); //capitalizes the priority text
-  priorityColor.insertAdjacentText("afterbegin", priorityText); //adds text to the span element
-  //changes priority text color based on what value it is
-  if (task.priorityRating == "low"){
-    priorityColor.classList.add("pLow");
-  }
-  if (task.priorityRating == "medium"){
-    priorityColor.classList.add("pMedium");
-  }
-  if (task.priorityRating == "high"){
-    priorityColor.classList.add("pHigh");
-  }
-  priorityRating.innerHTML = "Priority Rating: ";
-  priorityRating.appendChild(priorityColor);
-
-  //estimated time javascript
-  let estimatedTime = document.createElement("p");
-  let totalMinutes = task.estimatedTime;
-  let hours = Math.floor(totalMinutes / 60);
-  let minutes = totalMinutes % 60;
-  estimatedTime.innerHTML = "Est. Time to Complete: " + hours + "H" + minutes +"M";
-  
-  taskCardInfo.appendChild(dueDate);
-  taskCardInfo.appendChild(priorityRating);
-  taskCardInfo.appendChild(estimatedTime);
-  taskCard.appendChild(taskCardInfo);
-
-  //creates the icon section of the task card
-  let taskCardIcons = document.createElement("div");
-  taskCardIcons.classList.add("taskCardIcons");
-  //creates a delete button for the task
-  let delButton = document.createElement("button");
-  let delButtonImg = document.createElement("img"); //creates image in document
-  delButtonImg.classList.add("icon"); //adds class "icon" to image
-  delButtonImg.src = require("./images/Trashcan.png"); //sets image src
-  delButtonImg.alt = "Delete Task Card Icon";
-  delButton.appendChild(delButtonImg); //puts image under the html button container
-  taskCardIcons.appendChild(delButton);
-  //creates completion buttons for the task
-  let compNoButton = document.createElement("button");
-  let compNoButtonImg = document.createElement("img");
-  compNoButtonImg.classList.add("icon");
-  compNoButtonImg.src = require("./images/CompNo.png");
-  compNoButtonImg.alt = "Task Not Completed Icon";
-  compNoButton.appendChild(compNoButtonImg);
-  let compYesButton = document.createElement("button");
-  let compYesButtonImg = document.createElement("img");
-  compYesButtonImg.classList.add("icon");
-  compYesButtonImg.src = require("./images/CompYes.png");
-  compYesButtonImg.alt = "Task Completed Icon";
-  compYesButton.appendChild(compYesButtonImg);
-  //adds buttons to icon secton div
-  taskCardIcons.appendChild(compNoButton);
-  taskCardIcons.appendChild(compYesButton);
-  taskCard.appendChild(taskCardIcons);
-
-  //makes compYesButton invisible by default
-  compYesButton.style.display = "none";
-  //Puts the tasklist into the unlisted list in the taskColumn
-  tasklist.appendChild(taskCard);
-
-
-  //clears the input form
-  taskForm.reset();
-  //makes the form disappear from the screen
-  taskForm.style.display = "none";
-
-  //writes task object to local storage
-  let taskObject = {
-    "id": task.id,
-    "taskName": task.taskName,
-    "dueDate": task.dueDate,
-    "dateCreated": task.dateCreated,
-    "estimatedTime": task.estimatedTime,
-    "priorityRating": task.priorityRating,
-    "completionStatus": task.completionStatus
-  }
-
-  let tasks;
-
-  if(localStorage.getItem("tasks") == null){
-    tasks = [];
-  }
-  else{
-    tasks = localStorage.getItem("tasks");
-    tasks = JSON.parse(tasks);
-  }
-
-  let existingTask = tasks.find(function(task){
-    return task.id === tasks.id;
-  })
-
-  if(!existingTask){
-    tasks.push(taskObject);
-    let taskJSON = JSON.stringify(tasks);
-    localStorage.setItem("tasks", taskJSON);
-  }
-
-  
-  
-  //removes the task when delButton is pressed
-  delButton.addEventListener("click", function(event){
-    event.preventDefault();
-    taskCard.remove();
-    localStorage.removeItem(tasks)
-  })
-
-
-  /*toggles between compNoButton and compYesButton when you click them*/
-  compNoButton.addEventListener("click", function(event){
-    event.preventDefault();
-    compYesButton.style.display = "initial";
-    compNoButton.style.display = "none";
-    task.completionStatus = true;
-  })
-
-  compYesButton.addEventListener("click", function(event){
-    event.preventDefault();
-    compYesButton.style.display = "none";
-    compNoButton.style.display = "initial";
-    task.completionStatus = false;
-  })
-  
-}
-
+//renders the task column on the screen
 function renderTaskColumn(taskcolumn) {
   //creates task column and h2 
   let taskColumn = document.createElement("div");
@@ -303,25 +332,45 @@ function renderTaskColumn(taskcolumn) {
     taskColumns = localStorage.getItem("taskColumns");
     taskColumns = JSON.parse(taskColumns);
   }
+  
+  //checks if task column already exists in local storage
 
-  let existingTaskColumn = taskColumns.find(function(taskcolumns){
-    return taskcolumns.id === taskcolumn.id;
-  })
-
-  if(!existingTaskColumn){
+  let existingTaskColumn = false;
+  
+  //checks if localStorage has something inside
+  if (localStorage.length != 0){
+    //goes through each item in localStorage
+    for (let i = 0; i < localStorage.length; i++){
+      let keyName = localStorage.key(i);
+      let keyValue = localStorage.getItem(keyName);
+      //checks if keyName is taskColumns
+      if (keyName == "taskColumns"){
+        let columnList = JSON.parse(keyValue);
+        let numColumns = columnList.length; 
+        for (let o = 0; o < numColumns; o++){
+          //checks if column has same name, and if it does, set existingTaskColumn to true
+          if (columnList[o].columnName == taskColumnObject.columnName){
+            existingTaskColumn = true;
+          }
+        }
+      }
+    }
+  }
+  
+  if(existingTaskColumn == false){
     taskColumns.push(taskColumnObject);
     let taskColumnJSON = JSON.stringify(taskColumns);
     localStorage.setItem("taskColumns", taskColumnJSON);
   }
 
-
+  //shows the task form when the add task button is pressed
   addTaskButton.addEventListener("click", function(event){
     event.preventDefault();
-    tasklist = tasks;
+    tasklist = tasks; //changes the current tasklist to the <ul> element inside the column so that the task cards show up in the right place
     showAddTaskForm();
   })
 
-
+  //removes the task column when the remove task column button is pressed
   taskOutButton.addEventListener("click", function(event){
     event.preventDefault();
     taskColumn.remove();
@@ -334,49 +383,36 @@ function renderTaskColumn(taskcolumn) {
   taskColumnList.append(taskColumn);
 }
 
-//checks if localStorage has something inside
-
-  /*
+//checks if localStorage has something inside 
 if (localStorage.length != 0){
-
-  //goes through each item in localStorage
+  //goes through each item in local storage and checks for task columns. It needs to find all the task columns before it finds tasks, that's why it's separate.
   for (let i = 0; i < localStorage.length; i++){
-    let keyName = localStorage.key(0);
+    let keyName = localStorage.key(i);
     let keyValue = localStorage.getItem(keyName);
-
-    console.log(keyValue);
 
     //checks if keyName is taskColumns
     if (keyName == "taskColumns"){
-      
+      //renders the columns within local storage
+      let columnList = JSON.parse(keyValue)
+      let numColumns = columnList.length; 
+      for (let o = 0; o < numColumns; o++){
+        addTaskColumn(columnList[o].columnName, columnList[o].columnColor);
+      }
+    }
+  }
+
+  //goes through each item in local storage and checks for tasks
+  for (let i = 0; i < localStorage.length; i++){
+    let keyName = localStorage.key(i);
+    let keyValue = localStorage.getItem(keyName);
+
+    //checks if keyName is tasks
+    if (keyName == "tasks"){
+      let taskList = JSON.parse(keyValue);
+      let numTasks = taskList.length;
+      for (let u = 0; u < numTasks; u++){
+        addTask(taskList[u].taskName, taskList[u].dueDate, taskList[u].estimateTime, taskList[u].priorityRating, taskList[u].completionStatus, taskList[u].location);
+      }
     }
   }
 }
-*/
-
-/*function showLocalColumns(){
-  //grabs the key of localStorage item
-  let keyName = localStorage.key(0);
-  let keyValue = localStorage.getItem(keyName);
-  let currentLength = keyValue.length;
-  for (let i = 0; i < currentLength; i++){
-  
-
-    if (keyName == "taskColumns"){
-      let ColumnKey = keyValue[0].columnName;
-      let ColumnValue = keyValue[0].columnColor;
-    
-      addTaskColumn(ColumnKey, ColumnValue);
-    }
-    //checks if item in local storage has start "taskColumn" and creates the column if it does
-    
-
-    //checks if item in local storage has start "taskList" and creates the tasklist if it does
-    //if keyName == "tasks"{
-    //  let TaskKey = taskColumnArray[i].id;
-    //  let TaskValue = taskColumnArray[i].columnName;
-  
-    //  addTaskColumn(ColumnKey, ColumnValue);
-    //}
-  }
-}*/

@@ -1,6 +1,25 @@
 *{
-    /*resets the html to default*/
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  /*resets the html to default*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /*Sets default font settings*/
+  font-family: "Segoe UI", Arial, serif;
+  font-size: 1em;
+  font-weight: 550; /* 400 is normal, 700 is bold*/
+}
+
+/*resets all ::before things*/
+*::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*resets all ::after things*/
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

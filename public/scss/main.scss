@@ -1,7 +1,6 @@
 @import "reset.scss";
 @import "typography.scss";
 @import "layout.scss";
-@import "screen.scss";
 
 /*hides the scroll bars*/
 body{
@@ -57,6 +56,7 @@ button:hover{
 
   /*Forces grid to cover entire screen*/
   height: 100vh;
+  width: 100vw;
 }
 
 /*header css*/
@@ -87,7 +87,7 @@ button:hover{
   text-decoration: none; /*Removes underline from link*/
 }
 
-.header a:hover{
+.navlinks a:hover{
   color: #EBA640;
   transition: 0.2s;
 }
@@ -591,6 +591,23 @@ select{
 }
 
 
+
+
+/*stopwatch css
+
+.stopwatch{
+  position: fixed;
+  top: 80vh;
+  left: 1vw;
+  background-color: #0B6E4F;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+}
+*/
+
+
+
 /*music player css*/
 .musicPlayer {
   grid-area: musicplayer;
@@ -600,6 +617,7 @@ select{
 }
 
 .musicMain{
+  background-color: black;
   z-index: 999;
   width: 91vw;
   display: flex;
@@ -608,11 +626,13 @@ select{
   align-items: center;
 }
 
+/*makes the album cover take up the height of its container*/
 .album{
   width: auto;
   height: 100%;
 }
 
+/*
 .musicInfo{
   color: white;
   padding-left: 1vw;
@@ -747,7 +767,7 @@ select{
   height: 12vh;
   background-color: transparent;
   display: flex;
-  flex-postition: row;
+  flex-direction: row;
   align-items: center;
   border-style: solid;
   border-width: 0px 0px 0.25px 0px; /*adds border on the bottom of each song box*/
@@ -757,6 +777,7 @@ select{
   color: white;
 }
 
+/*formats the song info inside the song list*/
 .songInfo{
   display: flex;
   flex-direction: column;
@@ -764,11 +785,17 @@ select{
   padding-left: 1vw;
 }
 
+/*styles the text for the name of the song*/
 .songName{
   font-size: 1.2em;
   margin-bottom: 1vh;
 }
 
+/*styles the text for the name of the artist*/
 .artistName{
   font-weight: 400;
 }
+
+
+
+@import "screen.scss";
