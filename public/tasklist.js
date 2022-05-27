@@ -18,12 +18,56 @@ var addTaskColumnButton = document.getElementById("taskColumnAdd");
 var taskListArray = [];
 var taskColumnArray = [];
 
-//showLocalColumns(); //shows locally stored information on page
 
-//creates a task column on page at the beginning if taskColumnList doesn't have child nodes
-/*if (taskColumnList.childNodes.length == 3){
-  addTaskColumn("To Do", "#ED9D28");
-}*/
+
+//renders task columns and tasks from local storage if there is something inside
+
+//keeps track of column names so you can put tasks inside. Has the first non-displayed column name inside by default
+var nameArray = ["To Do"];
+
+//checks if localStorage has something inside 
+if (localStorage.length != 0) {
+  //goes through each item in local storage and checks for task columns. It needs to find all the task columns before it finds tasks, that's why it's separate.
+  for (let i = 0; i < localStorage.length; i++) {
+    let keyName = localStorage.key(i);
+    let keyValue = localStorage.getItem(keyName);
+
+    //checks if keyName is taskColumns
+    if (keyName == "taskColumns") {
+      //renders the columns within local storage
+      let columnList = JSON.parse(keyValue)
+      let numColumns = columnList.length;
+      for (let o = 0; o < numColumns; o++) {
+        addTaskColumn(columnList[o].columnName, columnList[o].columnColor);
+        nameArray.push(columnList[o].columnName);
+      }
+    }
+  }
+
+  //goes through each item in local storage and checks for tasks
+  for (let i = 0; i < localStorage.length; i++) {
+    let keyName = localStorage.key(i);
+    let keyValue = localStorage.getItem(keyName);
+
+    //checks if keyName is tasks
+    if (keyName == "tasks") {
+      let taskList = JSON.parse(keyValue);
+      let numTasks = taskList.length;
+      //goes through the tasks in local storage
+      for (let u = 0; u < numTasks; u++) {
+        //goes through the task columns on page
+        for (let j = 0; j < nameArray.length; j++){
+          //checks if task location has same name as task column name
+          if (taskList[u].taskLocation == nameArray[j]){
+            tasklist = document.querySelectorAll(".taskColumn")[j].children[2];
+            addTask(taskList[u].taskName, taskList[u].dueDate, taskList[u].estimatedTime, taskList[u].priorityRating, taskList[u].completionStatus);
+          }
+        }
+        
+      }
+    }
+  }
+}
 
 
 //task card js
@@ -154,8 +198,19 @@ function renderTask(task) {
   taskCardIcons.appendChild(compYesButton);
   taskCard.appendChild(taskCardIcons);
 
-  //makes compYesButton invisible by default
-  compYesButton.style.display = "none";
+  if (task.completionStatus == false){
+    //makes compYesButton invisible if completionStatus is false
+    compYesButton.style.display = "none";
+  }
+
+  else{
+    //makes compYesButton invisible if completionStatus is true
+    compNoButton.style.display = "none";
+  }
+
+  
+  
+  
   //Puts the tasklist into the unlisted list in the taskColumn
   tasklist.appendChild(taskCard);
 
@@ -165,61 +220,10 @@ function renderTask(task) {
   //makes the form disappear from the screen
   taskForm.style.display = "none";
 
+  //checks if a task card has been removed
+  var removedTask = false;
 
-
-  //writes task object to local storage
-  let taskObject = {
-    "id": task.id,
-    "taskName": task.taskName,
-    "dueDate": task.dueDate,
-    "dateCreated": task.dateCreated,
-    "estimatedTime": task.estimatedTime,
-    "priorityRating": task.priorityRating,
-    "completionStatus": task.completionStatus,
-    "taskLocation": task.location
-  }
-
-  let tasks;
-
-  //if nothing is in the localstorage tasks list, then creates an empty array to indicate that
-  if (localStorage.getItem("tasks") == null) {
-    tasks = [];
-  }
-  //else, save the task into local storage under tasks
-  else {
-    tasks = localStorage.getItem("tasks");
-    tasks = JSON.parse(tasks);
-  }
-
-  //checks if task already exists in localstorage
-
-  let existingTask = false;
-
-  //checks if localStorage has something inside
-  if (localStorage.length != 0) {
-    //goes through each item in localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-      let keyName = localStorage.key(i);
-      let keyValue = localStorage.getItem(keyName);
-      //checks if keyName is taskColumns
-      if (keyName == "tasks") {
-        let tasksList = JSON.parse(keyValue);
-        let numTasks = tasksList.length;
-        for (let o = 0; o < numTasks; o++) {
-          //checks if column has same name, and if it does, set existingTaskColumn to true
-          if (tasksList[o].taskName == taskObject.taskName) {
-            existingTask = true;
-          }
-        }
-      }
-    }
-  }
-
-  if (existingTask == false) {
-    tasks.push(taskObject);
-    let taskJSON = JSON.stringify(tasks);
-    localStorage.setItem("tasks", taskJSON);
-  }
+  writeTaskToStorage();
 
 
 
@@ -227,7 +231,8 @@ function renderTask(task) {
   delButton.addEventListener("click", function(event) {
     event.preventDefault();
     taskCard.remove();
-    localStorage.removeItem(tasks)
+    removedTask = true;
+    writeTaskToStorage();
   })
 
 
@@ -237,6 +242,7 @@ function renderTask(task) {
     compYesButton.style.display = "initial";
     compNoButton.style.display = "none";
     task.completionStatus = true;
+    writeTaskToStorage();
   })
 
   compYesButton.addEventListener("click", function(event) {
@@ -244,7 +250,65 @@ function renderTask(task) {
     compYesButton.style.display = "none";
     compNoButton.style.display = "initial";
     task.completionStatus = false;
+    writeTaskToStorage();
   })
+
+  function writeTaskToStorage(){
+    //writes task object to local storage
+    let taskObject = {
+      "id": task.id,
+      "taskName": task.taskName,
+      "dueDate": task.dueDate,
+      "dateCreated": task.dateCreated,
+      "estimatedTime": task.estimatedTime,
+      "priorityRating": task.priorityRating,
+      "completionStatus": task.completionStatus,
+      "taskLocation": task.location
+    }
+  
+    let tasks;
+  
+    //if nothing is in the localstorage tasks list, then creates an empty array to indicate that
+    if (localStorage.getItem("tasks") == null) {
+      tasks = [];
+    }
+    //else, save the task into local storage under tasks
+    else {
+      tasks = localStorage.getItem("tasks");
+      tasks = JSON.parse(tasks);
+    }
+  
+    //checks if task already exists in localstorage
+    let existingTask = false;
+
+    //overwrites task in local storage if it already exists
+    let numTasks = tasks.length;
+    for (let o = 0; o < numTasks; o++) {
+      //checks if column has same name, and if it does, set existingTaskColumn to true
+      if (tasks[o].taskName == taskObject.taskName && removedTask == false) {
+        existingTask = true;
+        tasks[o] = taskObject;
+        let taskJSON = JSON.stringify(tasks);
+        localStorage.setItem("tasks", taskJSON);
+      }
+
+      if (tasks[o].taskName == taskObject.taskName && removedTask == true){
+        existingTask = true;
+        tasks.splice(o,1); //removes the task from localstorage
+        let taskJSON = JSON.stringify(tasks);
+        localStorage.setItem("tasks", taskJSON);
+      }
+    }
+
+    //creates new task in local storage if it doesn't already exist
+    if (existingTask == false) {
+      tasks.push(taskObject);
+      let taskJSON = JSON.stringify(tasks);
+      localStorage.setItem("tasks", taskJSON);
+    }
+
+    removedTask = false; //resets taskRemoved
+  }
 }
 
 
@@ -323,53 +387,10 @@ function renderTaskColumn(taskcolumn) {
   taskColumnForm.reset();
   taskColumnForm.style.display = "none";
 
+  //checks if a task column has been removed
+  var columnRemoved = false;
 
-  //writes task column object to local storage
-  let taskColumnObject = {
-    "id": taskcolumn.id,
-    "columnName": taskcolumn.columnName,
-    "columnColor": taskcolumn.columnColor
-  }
-
-  let taskColumns;
-
-  if (localStorage.getItem("taskColumns") == null) {
-    taskColumns = [];
-  }
-  else {
-    taskColumns = localStorage.getItem("taskColumns");
-    taskColumns = JSON.parse(taskColumns);
-  }
-
-  //checks if task column already exists in local storage
-
-  let existingTaskColumn = false;
-
-  //checks if localStorage has something inside
-  if (localStorage.length != 0) {
-    //goes through each item in localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-      let keyName = localStorage.key(i);
-      let keyValue = localStorage.getItem(keyName);
-      //checks if keyName is taskColumns
-      if (keyName == "taskColumns") {
-        let columnList = JSON.parse(keyValue);
-        let numColumns = columnList.length;
-        for (let o = 0; o < numColumns; o++) {
-          //checks if column has same name, and if it does, set existingTaskColumn to true
-          if (columnList[o].columnName == taskColumnObject.columnName) {
-            existingTaskColumn = true;
-          }
-        }
-      }
-    }
-  }
-
-  if (existingTaskColumn == false) {
-    taskColumns.push(taskColumnObject);
-    let taskColumnJSON = JSON.stringify(taskColumns);
-    localStorage.setItem("taskColumns", taskColumnJSON);
-  }
+  writeColumnToStorage();
 
   //shows the task form when the add task button is pressed
   addTaskButton.addEventListener("click", function(event) {
@@ -382,59 +403,59 @@ function renderTaskColumn(taskcolumn) {
   taskOutButton.addEventListener("click", function(event) {
     event.preventDefault();
     taskColumn.remove();
-    localStorage.removeItem(taskColumns);
+    columnRemoved = true;
+    writeColumnToStorage();
   })
 
-  //puts task column on page in front of the add task column button
-  //taskContent.insertBefore(taskColumn, addTaskColumnButton);
-
   taskColumnList.append(taskColumn);
-}
 
-
-//keeps track of column names so you can put tasks inside. Has the first non-displayed column name inside by default
-var nameArray = ["To Do"];
-
-//checks if localStorage has something inside 
-if (localStorage.length != 0) {
-  //goes through each item in local storage and checks for task columns. It needs to find all the task columns before it finds tasks, that's why it's separate.
-  for (let i = 0; i < localStorage.length; i++) {
-    let keyName = localStorage.key(i);
-    let keyValue = localStorage.getItem(keyName);
-
-    //checks if keyName is taskColumns
-    if (keyName == "taskColumns") {
-      //renders the columns within local storage
-      let columnList = JSON.parse(keyValue)
-      let numColumns = columnList.length;
-      for (let o = 0; o < numColumns; o++) {
-        addTaskColumn(columnList[o].columnName, columnList[o].columnColor);
-        nameArray.push(columnList[o].columnName);
+  function writeColumnToStorage(){
+    //writes task column object to local storage
+    let taskColumnObject = {
+      "id": taskcolumn.id,
+      "columnName": taskcolumn.columnName,
+      "columnColor": taskcolumn.columnColor
+    }
+  
+    let taskColumns;
+  
+    if (localStorage.getItem("taskColumns") == null) {
+      taskColumns = [];
+    }
+    else {
+      taskColumns = localStorage.getItem("taskColumns");
+      taskColumns = JSON.parse(taskColumns);
+    }
+  
+    //checks if task column already exists in local storage
+  
+    let existingTaskColumn = false;
+  
+    let numColumns = taskColumns.length;
+    for (let o = 0; o < numColumns; o++) {
+    //checks if column has same name, and if it does, set existingTaskColumn to true and overwrites the existing one with the new one
+      if (taskColumns[o].columnName == taskColumnObject.columnName && columnRemoved == false) {
+        existingTaskColumn = true;
+        taskColumns[o] = taskColumnObject;
+        let taskColumnJSON = JSON.stringify(taskColumns);
+        localStorage.setItem("taskColumns", taskColumnJSON);
       }
+
+      //if column was removed, remove the column from local storage
+      if (taskColumns[o].columnName == taskColumnObject.columnName && columnRemoved == true) {
+        existingTaskColumn = true;
+        taskColumns.splice(o,1);
+        let taskColumnJSON = JSON.stringify(taskColumns);
+        localStorage.setItem("taskColumns", taskColumnJSON);
+      }
+    }
+  
+    if (existingTaskColumn == false) {
+      taskColumns.push(taskColumnObject);
+      let taskColumnJSON = JSON.stringify(taskColumns);
+      localStorage.setItem("taskColumns", taskColumnJSON);
     }
   }
 
-  //goes through each item in local storage and checks for tasks
-  for (let i = 0; i < localStorage.length; i++) {
-    let keyName = localStorage.key(i);
-    let keyValue = localStorage.getItem(keyName);
-
-    //checks if keyName is tasks
-    if (keyName == "tasks") {
-      let taskList = JSON.parse(keyValue);
-      let numTasks = taskList.length;
-      //goes through the tasks in local storage
-      for (let u = 0; u < numTasks; u++) {
-        //goes through the task columns on page
-        for (let j = 0; j < nameArray.length; j++){
-          //checks if task location has same name as task column name
-          if (taskList[u].taskLocation == nameArray[j]){
-            tasklist = document.querySelectorAll(".taskColumn")[j].children[2];
-            addTask(taskList[u].taskName, taskList[u].dueDate, taskList[u].estimatedTime, taskList[u].priorityRating, taskList[u].completionStatus);
-          }
-        }
-        
-      }
-    }
-  }
+  columnRemoved == false; //resets columnRemoved
 }
