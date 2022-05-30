@@ -1,5 +1,6 @@
 import "./components/navmenu.js";
 import "./components/musicplayer.js";
+import "./components/stopwatch.js";
 
 
 //Task List js starts here
@@ -433,7 +434,16 @@ function renderTaskColumn(taskcolumn) {
   
     let numColumns = taskColumns.length;
     for (let o = 0; o < numColumns; o++) {
-    //checks if column has same name, and if it does, set existingTaskColumn to true and overwrites the existing one with the new one
+      //if column was removed, remove the column from local storage
+      if (taskColumns[o].columnName == taskColumnObject.columnName && columnRemoved == true) {
+        existingTaskColumn = true;
+        taskColumns.splice(o,1);
+        let taskColumnJSON = JSON.stringify(taskColumns);
+        localStorage.setItem("taskColumns", taskColumnJSON);
+        break;
+      }
+      
+      //checks if column has same name, and if it does, set existingTaskColumn to true and overwrites the existing one with the new one
       if (taskColumns[o].columnName == taskColumnObject.columnName && columnRemoved == false) {
         existingTaskColumn = true;
         taskColumns[o] = taskColumnObject;
@@ -441,13 +451,7 @@ function renderTaskColumn(taskcolumn) {
         localStorage.setItem("taskColumns", taskColumnJSON);
       }
 
-      //if column was removed, remove the column from local storage
-      if (taskColumns[o].columnName == taskColumnObject.columnName && columnRemoved == true) {
-        existingTaskColumn = true;
-        taskColumns.splice(o,1);
-        let taskColumnJSON = JSON.stringify(taskColumns);
-        localStorage.setItem("taskColumns", taskColumnJSON);
-      }
+      
     }
   
     if (existingTaskColumn == false) {

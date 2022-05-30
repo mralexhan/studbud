@@ -1,5 +1,6 @@
 import "./components/navmenu.js";
 import "./components/musicplayer.js";
+import "./components/stopwatch.js";
 
 
 /*start of reference list javascript*/

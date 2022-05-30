@@ -50,39 +50,7 @@
       </div>
 
       <!-- unordered list where reference list is-->
-      <ul class="referenceList">
-
-        <!--
-        <div class="groupReference">
-          <div class="groupTitle">
-            <div class="referenceFront">
-              <h2>Name of Group Reference</h2>
-              <a href="#">open all links</a>
-            </div>
-            <button class = "openGroup">
-              <img class="icon" src="images/OpenArrow.png" alt="Opened Group Reference Icon">
-            </button>
-          </div>
-
-          <button class="addInGroup">
-            <img class="icon" src="images/Add.png" alt="Add New Reference in Group Icon">
-          </button>
-        </div>
-        -->
-        
-        <!--
-        <div class="groupReference">
-          <div class="singleReference">
-            <div class="referenceFront">
-              <h2>Name of Individual Reference</h2>
-              <p>https://notarealwebsite.com</p>
-            </div>
-            <a href="#">open</a>
-          </div>
-        </div>
-        -->
-        
-      </ul>
+      <ul class="referenceList"></ul>
 
 
       <!--Add New Group Reference Form-->
@@ -93,7 +61,7 @@
         </button>
         <div>
           <label for="groupRefName">Name of Group Reference</label><br>
-          <input class="fullIn" type="text" id="groupRefName" name="groupRefName"><br>
+          <input class="fullIn" type="text" id="groupRefName" name="groupRefName" required><br>
 
           <input type="submit" id="groupRefSubmit" class="addSubmit" value="Add">
         </div>
@@ -108,17 +76,17 @@
         </button>
         <div>
           <label for="singleRefName">Name of Reference</label><br>
-          <input class="fullIn" type="text" id="singleRefName" name="singleRefName"><br>
+          <input class="fullIn" type="text" id="singleRefName" name="singleRefName" required><br>
 
           <label for="urlName">URL of Reference</label><br>
-          <input class="fullIn" type="text" id="urlName" name="urlName"><br>
+          <input class="fullIn" type="text" id="urlName" name="urlName" required><br>
           
           <input type="submit" id="singleRefSubmit" class="addSubmit" value="Add">
         </div>
         
       </form>
 
-      <!--Add New Single Reference in Group Reference form. Looks the same in html, but exists to make javscript easier-->
+      <!--Add New Single Reference in Group Reference form. Looks the same in html, but exists to make javascript easier-->
       <form class="newSingleRefFormInGroup">
         <h2>Add New Reference</h2>
         <button type="button" class="newTaskOut" id="closeSingleRefInGroupForm">
@@ -126,14 +94,48 @@
         </button>
         <div>
           <label for="singleRefInGroupName">Name of Reference</label><br>
-          <input class="fullIn" type="text" id="singleRefInGroupName" name="singleRefInGroupName"><br>
+          <input class="fullIn" type="text" id="singleRefInGroupName" name="singleRefInGroupName" required><br>
 
           <label for="urlNameInGroup">URL of Reference</label><br>
-          <input class="fullIn" type="text" id="urlNameInGroup" name="urlNameInGroup"><br>
+          <input class="fullIn" type="text" id="urlNameInGroup" name="urlNameInGroup" required><br>
           
           <input type="submit" id="singleRefInGroupSubmit" class="addSubmit" value="Add">
         </div>
       </form>
+
+      <!--The stopwatch-->
+      <div class = "stopwatch">
+        <!--default stopwatch that is a button that looks like a clock-->
+        <button type = "button" class = "stopwatchButton">
+          <span class = "watchSquare"></span>
+          <span class = "stopwatchInner">
+            <span class = "minuteHand"></span>
+            <span class = "hourHand"></span>
+          </span>
+        </button>
+
+        <!--stopwatch after it has been clicked that starts counting up-->
+        <div class = "stopwatchCount">
+
+          <!--The counter that counts up-->
+          <p id = "countText"></p>
+
+          <!--Button that pauses the stopwatch count-->
+          <button type = "button" class = "stopwatchPause">
+            <img class = "icon" src = "images/PauseWhite.png" alt = "Pause Stopwatch Button">
+          </button>
+
+          <!--Button that starts the stopwatch counting again-->
+          <button type = "button" class = "stopwatchStart">
+            <img class = "icon" src = "images/PlayWhite.png" alt = "Start Stopwatch Button">
+          </button>
+
+          <!--Button that stops the counter and resets the stopwatch to the original look-->
+          <button type = "button" class = "stopwatchStop">
+            <img class = "icon" src = "images/RemoveWhite.png" alt = "Stop and Reset Stopwatch Button">
+          </button>
+        </div>
+      </div>
 
     </div>
 

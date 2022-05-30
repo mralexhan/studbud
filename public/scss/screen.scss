@@ -289,19 +289,22 @@
     font-size: 1.3em;
   }
 
+  /*makes items in single reference go down in a column instead of across in a row*/
   .singleReference{
-    height: 17vh;
+    min-height: 17vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 2vw;
   }
 
+  /*makes information in single reference instead of across in a row*/
   .singleReference .referenceFront{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    width: 90vw;
     height: 8vh;
     margin-top: 2vh;
   }
@@ -313,8 +316,12 @@
   }
   
   .groupTitle{
-    height:7vh;
     padding-left: 2vw;
+  }
+
+  .referenceFront{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
   }
 
   /*all these need their own css because the different margin sizes in their web form css overwrites the default form css if we were to try implementing that*/

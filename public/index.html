@@ -153,6 +153,40 @@
         </div>
       </form>
 
+      <!--The stopwatch-->
+      <div class = "stopwatch">
+        <!--default stopwatch that is a button that looks like a clock-->
+        <button type = "button" class = "stopwatchButton">
+          <span class = "watchSquare"></span>
+          <span class = "stopwatchInner">
+            <span class = "minuteHand"></span>
+            <span class = "hourHand"></span>
+          </span>
+        </button>
+
+        <!--stopwatch after it has been clicked that starts counting up-->
+        <div class = "stopwatchCount">
+
+          <!--The counter that counts up-->
+          <p id = "countText"></p>
+
+          <!--Button that pauses the stopwatch count-->
+          <button type = "button" class = "stopwatchPause">
+            <img class = "icon" src = "images/PauseWhite.png" alt = "Pause Stopwatch Button">
+          </button>
+
+          <!--Button that starts the stopwatch counting again-->
+          <button type = "button" class = "stopwatchStart">
+            <img class = "icon" src = "images/PlayWhite.png" alt = "Start Stopwatch Button">
+          </button>
+
+          <!--Button that stops the counter and resets the stopwatch to the original look-->
+          <button type = "button" class = "stopwatchStop">
+            <img class = "icon" src = "images/RemoveWhite.png" alt = "Stop and Reset Stopwatch Button">
+          </button>
+        </div>
+      </div>
+
     </div>
 
 

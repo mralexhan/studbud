@@ -32,6 +32,7 @@ form h2{
 button{
   border: none;
   font-size: 0px;
+  background-color: transparent;
 }
 
 button:hover{
@@ -69,11 +70,13 @@ button:hover{
   align-items: center;
 }
 
+/*styls the logo in the header*/
 .header img{
   height: 10vh;
   padding-left: 3vw;
 }
 
+/*formats the navlinks so it goes across in the header*/
 .header .navlinks{
   width: 35vw;
   display: flex;
@@ -81,12 +84,14 @@ button:hover{
   flex-direction: row;
 }
 
+/*styles the text for the links in the nav*/
 .header a{
   color: white;
   font-size: 1.2em;
   text-decoration: none; /*Removes underline from link*/
 }
 
+/*changes the color of the text for the links in the nav when the user hovers their mouse over it. It makes it more obvious that they can click the links*/
 .navlinks a:hover{
   color: #EBA640;
   transition: 0.2s;
@@ -102,6 +107,7 @@ button:hover{
   padding-right: 3vw;
 }
 
+/*styles and formats the titles for each page*/
 .main h1{
   padding-left: 4vw;
   padding-bottom: 2vh;
@@ -157,13 +163,14 @@ button:hover{
   align-items: center;
 }
 
+/*positions the remove task column button on the top right of the column*/
 .taskOut{
   position: absolute; 
   left: 18.5vw;
   top: 1vh;
-  background-color: transparent;
 }
 
+/*makes the remove task column button a little bigger*/
 .taskOut .icon{
   height: 3vh;
 }
@@ -190,6 +197,7 @@ button:hover{
   border-radius: 10px;
 }
 
+/*makes the add task button icon a little bit bigger*/
 .taskAdd .icon{
   height: 3vh;
 }
@@ -202,6 +210,7 @@ button:hover{
   border-radius: 13px 13px 0px 0px;
 }
 
+/*makes the color of the task card name white so it stands out against the black background*/
 .taskCardTitle h3{
   color: white;
 }
@@ -211,6 +220,7 @@ button:hover{
   padding: 1vh;
 }
 
+/*creates some space between the information in the task card*/
 .taskCardInfo p{
   margin-bottom: 1vh;
 }
@@ -228,12 +238,14 @@ button:hover{
   color: #0B6E4F;
 }
 
+/*formats the space underneath the task card information where the remove task and task completion status icons are*/
 .taskCardIcons{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+/*creates some space around the buttons so they are glued to the edge of the task card*/
 .taskCard button{
   margin-top: 1vh;
   margin-left: 1vw;
@@ -241,7 +253,7 @@ button:hover{
   margin-bottom: 2vh;
 }
 
-
+/*styles the heading of the task columns*/
 .taskColumn h2{
   padding: 1vw;
   font-size: 1.5em;
@@ -269,7 +281,6 @@ button:hover{
   position: absolute; 
   left: 27vw;
   top: 2vh;
-  background-color: transparent;
 }
 
 .newTaskOut .icon{
@@ -469,18 +480,22 @@ select{
 
 
 /*Reference List Javascript*/
+
+/*formats the add new references buttons and puts them on the top right side of the page*/
 .addReferences{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 
+/*makes sure references go down in a column*/
 .referenceList{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/*styles the two buttons that add new references onto the page*/
 .newReferences{
   width: 10vw;
   height: 5vh;
@@ -492,47 +507,55 @@ select{
   font-size: 1em;
 }
 
+/*styles the top box of the group references*/
 .groupTitle{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 85vw;
-  height: 5vh;
+  min-height: 5vh;
   padding-left: 4vh;
   margin-top: 1vh;
   background-color: #EBA640;
   border: 2px solid black;
 }
 
+/*makes sure the items in the reference titles goes across*/
 .referenceFront{
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+/*allows the h2 to be padded*/
 .referenceFront h2{
-  margin-right: 5vw;
+  white-space: pre;
 }
 
+/*makes the link names not semi-bold*/
+.referenceFront p{
+  font-weight: 400;
+}
+
+/*removes the background color of the open group button so it doesn't look weird*/
 .openGroup{
   background-color: transparent;
 }
 
+/*styles the open group button icon*/
 .openGroup .icon{
   height: 2.5vh;
   margin-right: 1vw;
 }
 
-.closeGroup{
-  background-color: transparent;
-}
-
+/*styles the close group button icon*/
 .closeGroup .icon{
   height: 2.5vh;
   margin-right: 1vw;
 }
 
+/*styles the add in group button*/
 .addInGroup{
   display: flex;
   flex-direction: column;
@@ -546,17 +569,19 @@ select{
   border-width: 0px 2px 2px 2px;
 }
 
+/*styles the add icon in the add in group button*/
 .addInGroup .icon{
   height: 3vh;
 }
 
+/*styles each single reference*/
 .singleReference{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 85vw;
-  height: 5vh;
+  min-height: 5vh;
   background-color: white;
   border-style: solid;
   border-color: black;
@@ -565,10 +590,12 @@ select{
   padding-right: 4vh;
 }
 
+/*creates some space beneath each group reference*/
 .groupReference{
   margin-bottom: 4vh;
 }
 
+/*styles the create new group reference form*/
 .newGroupRefForm{
   width: 30vw;
   min-height: 28vh;
@@ -576,6 +603,7 @@ select{
   margin-left: -15vw; /* Negative half of width. */
 }
 
+/*styles the create new single reference form*/
 .newSingleRefForm{
   width: 30vw;
   min-height: 28vh;
@@ -583,6 +611,7 @@ select{
   margin-left: -15vw; /* Negative half of width. */
 }
 
+/*styles the create new single reference in group form*/
 .newSingleRefFormInGroup{
   width: 30vw;
   min-height: 28vh;
@@ -590,22 +619,112 @@ select{
   margin-left: -15vw; /* Negative half of width. */
 }
 
+/*styles the remove link button*/
+.removeLink{
+  font-size: 1em;
+  text-decoration: underline;
+  color: red;
+}
 
 
 
-/*stopwatch css
 
+/*stopwatch css*/
+
+/*creates the stopwatch background. exists so the animation can take place*/
 .stopwatch{
   position: fixed;
-  top: 80vh;
+  top: 75vh;
   left: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0B6E4F;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  transition-property: width, height, top, border-radius;
+  transition-duration: 0.2s;
+}
+
+/*formats the stopwatch button before it is clicked on*/
+.stopwatchButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #0B6E4F;
   width: 5vw;
   height: 5vw;
   border-radius: 50%;
 }
-*/
 
+/*styles the little square on the stopwatch*/
+.watchSquare{
+  position: absolute;
+  top: -0.3vw;
+  width: 0.5vw;
+  height: 0.3vw;
+  background-color: #0B6E4F;
+}
+
+/*styles the white circle inside the stopwatch*/
+.stopwatchInner{
+  background-color: transparent;
+  width: 4.5vw;
+  height: 4.5vw;
+  border-style: solid;
+  border-color: white;
+  border-width: 0.2vw;
+  border-radius: 50%;
+}
+
+/*styles the minute hand*/
+.minuteHand{
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  width: 0.2vw;
+  height: 1.9vw;
+  border-radius: 20px;
+  background-color: white;
+  transform-origin: center 0; /*keeps the hand in the middle of the clock when transforming*/
+  transform: rotate(180deg); /*rotates the minute hand to the 12 o clock position*/
+}
+
+/*styles the hour hand*/
+.hourHand{
+  position: absolute;
+  left: 49%;
+  top: 52%;
+  width: 0.2vw;
+  height: 1.4vw;
+  border-radius: 20px;
+  background-color: white;
+  transform-origin: center 0;
+  transform: rotate(300deg);
+}
+
+/*formats the things inside the stopwatch after the stopwatch button is clicked*/
+.stopwatchCount{
+  display: none; /*should be flex when not none*/
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 15vw;
+}
+
+/*styles the stopwatch counter text*/
+#countText{
+  color: white;
+  font-size: 2.5em;
+  font-weight: 400;
+}
+
+/*makes it so that the start button is hidden by default*/
+.stopwatchStart{
+  display: none;
+}
 
 
 /*music player css*/
@@ -616,6 +735,7 @@ select{
   background-color: black;
 }
 
+/*formats the information in the music player right of the album art*/
 .musicMain{
   background-color: black;
   z-index: 999;
@@ -632,7 +752,7 @@ select{
   height: 100%;
 }
 
-/*
+/*lays out the song and artist name section of the music player*/
 .musicInfo{
   color: white;
   padding-left: 1vw;
@@ -662,7 +782,7 @@ select{
   justify-content: space-between;
 }
 
-
+/*formats the timeline and time count that shows how much of the music has been played*/
 .musicTimer{
   display: flex;
   flex-direction: column;
@@ -739,10 +859,6 @@ select{
   cursor: pointer; /* Cursor on hover */
 }
 
-.playlistButton{
-  background-color: transparent;
-}
-
 /*styles the pop out section that actually contains all the songs*/
 .songList{
   z-index: 998;
@@ -782,18 +898,21 @@ select{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 1vw;
 }
 
 /*styles the text for the name of the song*/
 .songName{
   font-size: 1.2em;
+  padding-left: 1vw;
   margin-bottom: 1vh;
+  color: white;
 }
 
 /*styles the text for the name of the artist*/
 .artistName{
   font-weight: 400;
+  padding-left: 1vw;
+  color: white;
 }
 
 
