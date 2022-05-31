@@ -16,6 +16,7 @@ form{
   background-color: white;
   border: 2px solid #0B6E4F;
   padding: 2.5vw;
+  z-index: 997;
 }
 
 form h2{
@@ -349,6 +350,7 @@ select{
   border-radius: 5px;
   padding: 2vw;
   margin: auto;
+  z-index: 990;
 }
 
 /*formats the spacing of the pomodoro times*/
@@ -370,6 +372,7 @@ select{
   border: 2px solid black;
   border-radius: 5px;
   padding: 2vw;
+  z-index: 990;
 }
 
 /*Formats the little pomodoro countdown box*/
@@ -486,6 +489,7 @@ select{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin-bottom: 1vh;
 }
 
 /*makes sure references go down in a column*/
@@ -521,6 +525,17 @@ select{
   border: 2px solid black;
 }
 
+/*formats and styles the open all links button*/
+.groupTitle a{
+  margin-right: 32vw;
+  color: blue;
+  text-decoration: underline;
+}
+
+.groupTitle a:hover{
+  cursor: pointer;
+}
+
 /*makes sure the items in the reference titles goes across*/
 .referenceFront{
   display: flex;
@@ -528,13 +543,16 @@ select{
   align-items: center;
 }
 
-/*allows the h2 to be padded*/
+/*formats the title of the references*/
 .referenceFront h2{
-  white-space: pre;
+  display: inline-block; /*allows you adjust the width of the element*/
+  width: 20vw;
 }
 
-/*makes the link names not semi-bold*/
+/*formats the links name and also makes them not semi-bold*/
 .referenceFront p{
+  display: inline-block; /*allows you adjust the width of the element*/
+  width: 30vw;
   font-weight: 400;
 }
 
@@ -640,8 +658,8 @@ select{
   justify-content: center;
   align-items: center;
   background-color: #0B6E4F;
-  width: 5vw;
-  height: 5vw;
+  width: 10vh;
+  height: 10vh;
   border-radius: 50%;
   transition-property: width, height, top, border-radius;
   transition-duration: 0.2s;
@@ -653,28 +671,28 @@ select{
   justify-content: center;
   align-items: center;
   background-color: #0B6E4F;
-  width: 5vw;
-  height: 5vw;
+  width: 10vh;
+  height: 10vh;
   border-radius: 50%;
 }
 
 /*styles the little square on the stopwatch*/
 .watchSquare{
   position: absolute;
-  top: -0.3vw;
-  width: 0.5vw;
-  height: 0.3vw;
+  top: -0.6vh;
+  width: 1vh;
+  height: 0.6vh;
   background-color: #0B6E4F;
 }
 
 /*styles the white circle inside the stopwatch*/
 .stopwatchInner{
   background-color: transparent;
-  width: 4.5vw;
-  height: 4.5vw;
+  width: 9vh;
+  height: 9vh;
   border-style: solid;
   border-color: white;
-  border-width: 0.2vw;
+  border-width: 0.4vh;
   border-radius: 50%;
 }
 
@@ -683,8 +701,8 @@ select{
   position: absolute;
   left: 50%;
   top: 53%;
-  width: 0.2vw;
-  height: 1.9vw;
+  width: 0.4vh;
+  height: 3.5vh;
   border-radius: 20px;
   background-color: white;
   transform-origin: center 0; /*keeps the hand in the middle of the clock when transforming*/
@@ -696,8 +714,8 @@ select{
   position: absolute;
   left: 49%;
   top: 52%;
-  width: 0.2vw;
-  height: 1.4vw;
+  width: 0.4vh;
+  height: 2.8vh;
   border-radius: 20px;
   background-color: white;
   transform-origin: center 0;
@@ -710,8 +728,7 @@ select{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  text-align: center;
-  width: 15vw;
+  width: 30vh;
 }
 
 /*styles the stopwatch counter text*/

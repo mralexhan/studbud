@@ -285,10 +285,6 @@
     font-size: 0.8em;
   }
 
-  .referenceFront h2{
-    font-size: 1.3em;
-  }
-
   /*makes items in single reference go down in a column instead of across in a row*/
   .singleReference{
     min-height: 17vh;
@@ -298,11 +294,26 @@
     padding-left: 2vw;
   }
 
-  /*makes information in single reference instead of across in a row*/
-  .singleReference .referenceFront{
+  .referenceFront{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+  .referenceFront h2{
+    width: 70vw;
+    font-size: 1.3em;
+  }
+  
+  /*formats the links name and also makes them not semi-bold*/
+  .referenceFront p{
+    width: 70vw;
+  }
+
+  /*makes information in single reference instead of across in a row*/
+  .singleReference .referenceFront{
     justify-content: space-between;
     width: 90vw;
     height: 8vh;
@@ -319,9 +330,8 @@
     padding-left: 2vw;
   }
 
-  .referenceFront{
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+  .groupTitle button{
+    margin-right: 1vw;
   }
 
   /*all these need their own css because the different margin sizes in their web form css overwrites the default form css if we were to try implementing that*/
@@ -341,7 +351,24 @@
   }
 
 
+  /*stopwatch css*/
+  .stopwatch{
+    width: 10vh;
+    height: 10vh;
+    z-index: 995;
+  }
 
+  /*formats the stopwatch button before it is clicked on*/
+  .stopwatchButton{
+    width: 10vh;
+    height: 10vh;
+  }
+
+  #countText{
+    font-size: 1.5em;
+  }
+
+  
   /*music player css*/
   .songName{
     font-size: 1em;
@@ -352,7 +379,12 @@
   }
   
   .songList{
+    width: 60vw;
     right: -60vw;
+  }
+
+  .songList.active{
+    right: 0vw;
   }
 
   .artistName{
