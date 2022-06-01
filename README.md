@@ -7,16 +7,23 @@ The primary target audience for my Studbud Web App design is students in primari
 **Tasklist Page**
 
 **Tasklist Page - Original Design**
+<img src = "mkimages/ReferenceBrowserOriginal.png" width="700px"/>
 
-![](mkimages/ReferenceBrowserOriginal.png) ![](mkimages/AddNewTaskOriginal.png)
+<img src = "mkimages/AddNewTaskOriginal.png" width="700px"/>
 
 **Tasklist Page - Final Web App Version**
+<img src = "mkimages/ReferenceBrowserNew.png" width="700px"/>
 
-![](mkimages/ReferenceBrowserNew.png) ![](mkimages/AddNewTaskNew.png) ![](mkimages/AddTaskColumn.png)
+<img src = "mkimages/AddNewTaskNew.png" width="700px"/>
+
+<img src = "mkimages/AddTaskColumn.png" width="700px"/>
 
 **Tasklist Page - Mobile**
 
-**Original Design:**![](mkimages/TaskListMobileOriginal.png) **Web App Design:**![](mkimages/TaskListMobileNew.png)
+**Original Design:**
+<img src = "mkimages/TaskListMobileOriginal.png" width="200px"/>
+**Web App Design:**
+<img src = "mkimages/TaskListMobileNew.png" width="200px"/>
 
 The tasklist page didn&#39;t really go through too much of a change between the version I had in my final mockup and the one I eventually created on the web app. One difference that is reflected on every single page is that the contents in the main section on the web app are a lot more constricted than it was in the mockup. This is because in an actual browser, the web app has to share the screen with the taskbar at the bottom and the browser search bars, tabs, and other things on top, limiting the space the page is allowed on screen. This just meant I had to make every page scrollable by default.
 
@@ -30,15 +37,22 @@ Across all the pages, I also centred and increased the size of their headings in
 
 **Pomodoro Timer - Original Design**
 
-![](mkimages/BigPomoOriginal.png) ![](mkimages/LittlePomoOriginal.png)
+<img src = "mkimages/BigPomoOriginal.png" width="700px"/>
+
+<img src = "mkimages/LittlePomoOriginal.png" width="700px"/>
 
 **Pomodoro Timer - Final Web App Version**
 
-![](mkimages/BigPomoNew.png) ![](mkimages/LittlePomoNew.png)
+<img src = "mkimages/BigPomoNew.png" width="700px"/>
+
+<img src = "mkimages/LittlePomoNew.png" width="700px"/>
 
 **Pomodoro Timer - Mobile**
 
-**Original Design:**![](mkimages/PomodoroMobileOriginal.png) **Web App Design:**![](mkimages/PomodoroMobileNew.png)
+**Original Design:**
+<img src = "mkimages/PomodoroMobileOriginal.png" width="200px"/>
+**Web App Design:**
+<img src = "mkimages/PomodoroMobileNew.png" width="200px"/>
 
 Similar to the Task List page, I didn&#39;t actually have too many differences between the pomodoro timer page design in the final web app and the final mockup design. The most significant difference is that in the web app version, the minutes and seconds in the time input form are separated and labelled, while the original was connected and unlabelled. This honestly has less to do with actual design than it has to do with coding. To my knowledge, there isn&#39;t a way to create a time input that is connected in the way shown in my mockup design. In the end, I had to separate the minute and second inputs into different &quot;number&quot; inputs instead of having one single &quot;time&quot; input. To make sure users can still understand the format of this time input, I added &quot;minute&quot; and &quot;second&quot; labels underneath each input.
 
@@ -47,20 +61,25 @@ When it comes to the mobile version, the main change is that I made all the inpu
 **Reference List Page**
 
 **Reference List Page - Original Design**
+<img src = "mkimages/ReferenceBrowserOriginal.png" width="700px"/>
 
-![](mkimages/ReferenceBrowserOriginal.png) ![](mkimages/AddSingleReferenceOriginal.png)
+<img src = "mkimages/AddSingleReferenceOriginal.png" width="700px"/>
 
-![](mkimages/AddGroupReferenceOriginal.png)
+<img src = "mkimages/AddGroupReferenceOriginal.png" width="700px"/>
 
 **Reference List Page - Final Web App Version**
+<img src = "mkimages/ReferenceBrowserNew.png" width="700px"/>
 
-![](mkimages/ReferenceBrowserNew.png) ![](mkimages/AddSingleReferenceNew.png)
+<img src = "mkimages/AddSingleReferenceNew.png" width="700px"/>
 
-![](mkimages/AddGroupReferenceNew.png)
+<img src = "mkimages/AddGroupReferenceNew.png" width="700px"/>
 
 **Reference List Page - Mobile**
 
-**Original Design:**![](mkimages/ReferenceMobileOriginal.png) **Web App Design:**![](mkimages/ReferenceMobileNew.png)
+**Original Design:**
+<img src = "mkimages/ReferenceMobileOriginal.png" width="200px"/>
+**Web App Design:**
+<img src = "mkimages/ReferenceMobileNew.png" width="200px"/>
 
 The most significant changes I made to the Reference List page is the addition of a delete reference and delete group reference button. In my original design, there was no way to actually remove any references on the page. This means that if the user accidently typed something wrong, or just simply didn&#39;t have any use for a reference anymore, there was no way to actually get rid of it. This would significantly hinder their ability to organise their references. Thus, to solve that problem, I added the remove reference and remove group reference buttons onto the page.
 
@@ -69,20 +88,25 @@ In the mobile version, I also changed the group reference heading to go down in 
 **Widgets (Stopwatch + Music Player)**
 
 **Widgets (Stopwatch + Music Player) - Original Design**
+<img src = "mkimages/TaskListBrowserOriginal.png" width="700px"/>
 
-![](mkimages/TaskListBrowserOriginal.png) ![](mkimages/StopwatchOpenOriginal.png)
+<img src = "mkimages/StopwatchOpenOriginal.png" width="700px"/>
 
-![](mkimages/PlaylistOriginal.png)
+<img src = "mkimages/PlaylistOriginal.png" width="700px"/>
 
 **Widgets (Stopwatch + Music Player) - Final Web App**
+<img src = "mkimages/TaskListBrowserNew.png" width="700px"/>
 
-![](mkimages/TaskListBrowserNew.png) ![](mkimages/StopwatchOpenNew.png)
+<img src = "mkimages/StopwatchOpenNew.png" width="700px"/>
 
-![](mkimages/PlaylistNew.png)
+<img src = "mkimages/PlaylistNew.png" width="700px"/>
 
 **Reference List Page - Mobile**
 
-**Original Design:**![](mkimages/TaskListMobileOriginal.png) **Web App Design:**![](mkimages/TaskListMobileNew.png)
+**Original Design:**
+<img src = "mkimages/TaskListMobileOriginal.png" width="200px"/>
+**Web App Design:**
+<img src = "mkimages/TaskListMobileNew.png" width="200px"/>
 
 There were a few changes to my widgets from my mockup design to my final web app design. In the final web app, I made the stopwatch and its pop up a little bigger. I thought this would make the stopwatch function more obvious, as the original version was a little too small, and a bit easy to miss. In regards to the music player, I added a music timeline and time display underneath the pause/play, next song, and previous song buttons. This allows users to know how far along a song they currently are. Honestly, there&#39;s no real design reason I added this function. This is just a staple feature to any music player, and not having it just makes the player feel incomplete. Another change I made is that I made the pop-out playlist cover the header as well as the main section. This is because, with the way the page is constricted on the browser, having the playlist be further covered by both the header and the music player makes it feel incredibly claustrophobic. Letting the playlist also cover the header gives this playlist more breathing room, making it more comfortable to look at and scroll through without getting in the way of any of its functionality.
 
