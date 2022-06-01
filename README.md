@@ -8,14 +8,14 @@ The primary target audience for my Studbud Web App design is students in primari
 
 **Tasklist Page - Original Design**
 
-<img src = "mkimages/ReferenceBrowserOriginal.png" width="700px"/>
+<img src = "mkimages/TaskListBrowserOriginal.png" width="700px"/>
 
 <img src = "mkimages/AddNewTaskOriginal.png" width="700px"/>
 </br>
 
 **Tasklist Page - Final Web App Version**
 
-<img src = "mkimages/ReferenceBrowserNew.png" width="700px"/>
+<img src = "mkimages/TaskListBrowserNew.png" width="700px"/>
 
 <img src = "mkimages/AddNewTaskNew.png" width="700px"/>
 
