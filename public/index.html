@@ -5,43 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "scss/main.scss">
-    <title>Studbud Task List</title>
+    <title>Studbud</title>
     <link rel="icon" type="image/x-icon" href="images/Logo.png"> <!--adds favicon to page-->
 </head>
 
 <body>
 
-  <!--Mobile navbar. Outside of header so it can cover the whole page-->
-  <div class="menu">
-    <a class="navbox" href="index.html">Your Tasks</a>
-    <a class="navbox" href="pomodoro.html">Pomodoro Timer</a>
-    <a class="navbox" href="reading.html">Reading List</a>
-  </div>
-
-  <!--Creates hamburger menu -->
-  <div class="menu-toggle">
-    <span></span>
-  </div>
-
   <div class="grid-container">
 
+    <!--HTML for header on top of the page-->
     <div class="header">
-      <a href="index.html">
-        <img src="images/Logo.png" alt="Studbud Logo">
-      </a>
 
+      <!--HTML for the logo-->
+      <img src="images/Logo.png" alt="Studbud Logo">
+
+      <!--Mobile navbar. Outside of header so it can cover the whole page-->
+      <div class="menu">
+        <a class="navbox" id="mobileTask">Your Tasks</a>
+        <a class="navbox" id ="mobileTimer">Pomodoro Timer</a>
+        <a class="navbox" id = "mobileReading">Reading List</a>
+      </div>
+      <!--Creates hamburger menu -->
+      <div class="menu-toggle">
+        <span></span>
+      </div>
+
+      <!--The area that contains all the links to the different pages-->
       <div class="navlinks">
-        <a href="index.html">Your Tasks</a>
-        <a href="pomodoro.html">Pomodoro Timer</a>
-        <a href="reading.html">Reading List</a>
+        <a id="browserTask">Your Tasks</a>
+        <a id="browserTimer">Pomodoro Timer</a>
+        <a id="browserReading">Reading List</a>
       </div>
 
 
 
     </div>
 
+    <!--There are three different mains for the different pages. When one page is displayed, the others would be hidden, so there would only be one main active at a time-->
 
-    <div class="main">
+    <!--The main page containing the task list-->
+    <div class="main" id = "taskList">
       <h1>Your Tasks</h1>
 
       <div class="taskContent" id="taskContent">
@@ -49,8 +52,9 @@
         <!--Unordered list where task columns go-->
         <ul>
 
+          <!--The unseen first task column on the page. The display for this column is set to none so it doesn't show up on the page. It exists to make the javascript easier (has elements the javascript has to listen for that wouldn't exist otherwise)-->
           <div class="taskColumn" id="firstColumn">
-            <h2>To Do</h2>
+            <h2>ASDFAFESASFEDDD</h2>
 
             <button class="taskOut">
               <img class="icon" src="images/Remove.png" alt="Remove Task Column Icon">
@@ -116,20 +120,20 @@
         </button>
         <div>
           <label for="taskName">Name of Task:</label><br>
-          <input class="fullIn" type="text" id="taskName" name="taskName"><br>
+          <input class="fullIn" type="text" id="taskName" name="taskName" required><br>
 
           <label for="taskDue">Due Date:</label><br>
-          <input type="date" id="taskDue" name="taskDue"><br>
+          <input type="date" id="taskDue" name="taskDue" required><br>
 
           <label for="taskPriority">Priority Rating:</label><br>
-          <select id="taskPriority" name="taskPriority">
+          <select id="taskPriority" name="taskPriority" required>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select><br>
 
           <label for="taskComp">Est. Time to Complete (in minutes)</label><br>
-          <input type="number" id="taskComp" name="taskComp"><br>
+          <input type="number" id="taskComp" name="taskComp" required><br>
 
           <input type="submit" id="taskSubmit" class="addSubmit" value="Add">
         </div>
@@ -144,7 +148,7 @@
         </button>
         <div>
           <label for="taskColumnName">Name of Task Column:</label><br>
-          <input class="fullIn" type="text" id="taskColumnName" name="taskColumnName"><br>
+          <input class="fullIn" type="text" id="taskColumnName" name="taskColumnName" required><br>
 
           <label for="colorpicker">Task Column Color:</label>
           <input type="color" id="colorpicker" value="#ED9D28">
@@ -153,47 +157,240 @@
         </div>
       </form>
 
-      <!--The stopwatch-->
-      <div class = "stopwatch">
-        <!--default stopwatch that is a button that looks like a clock-->
-        <button type = "button" class = "stopwatchButton">
-          <span class = "watchSquare"></span>
-          <span class = "stopwatchInner">
-            <span class = "minuteHand"></span>
-            <span class = "hourHand"></span>
-          </span>
-        </button>
+    </div>
 
-        <!--stopwatch after it has been clicked that starts counting up-->
-        <div class = "stopwatchCount">
+    <!--The main page containing the pomodoro timer-->
+    <div class="main" id = "pomodoroTimer">
+      <h1>Pomodoro Timer</h1>
 
-          <!--The counter that counts up-->
-          <p id = "countText"></p>
+      <!--HTML for the big form where users input their times for each time period in a pomodoro timer cycle-->
+      <form class="bigPomo" id="bigPomo">
 
-          <!--Button that pauses the stopwatch count-->
-          <button type = "button" class = "stopwatchPause">
-            <img class = "icon" src = "images/PauseWhite.png" alt = "Pause Stopwatch Button">
-          </button>
+        <!--Section that contains the different inputs for the pomodoro timer cycle-->
+        <div class="times">
 
-          <!--Button that starts the stopwatch counting again-->
-          <button type = "button" class = "stopwatchStart">
-            <img class = "icon" src = "images/PlayWhite.png" alt = "Start Stopwatch Button">
-          </button>
+          <!--Pomodoro Time Input Section-->
+          <div class="timeInput" id="pomodoroSet">
+            <h2>Pomodoro</h2>
+            <div class="timeLayout">
+              <div class="timeInd">
+                <input type="number" id="pomoMin" name="pomoMin" min="0" max="99" value="25">
+                <label for=pomoMin">minutes</label>
+              </div>
+              <p>:</p>
+              <div class="timeInd">
+                <input type="number" id="pomoSec" name="pomoSec" min="0" max="59" value="00">
+                <label for="pomoSec">seconds</label>
+              </div>
+            </div>
+          </div>
 
-          <!--Button that stops the counter and resets the stopwatch to the original look-->
-          <button type = "button" class = "stopwatchStop">
-            <img class = "icon" src = "images/RemoveWhite.png" alt = "Stop and Reset Stopwatch Button">
-          </button>
+          <!--Short Break Time Input Section-->
+          <div class="timeInput" id="shortBreakSet">
+            <h2>Short Break</h2>
+            <div class="timeLayout">
+              <div class="timeInd">
+                <input type="number" id="shortMin" name="shortMin" min="0" max="99" value="05">
+                <label for=shortMin">Minutes</label>
+              </div>
+              <p>:</p>
+              <div class="timeInd">
+                <input type="number" id="shortSec" name="shortSec" min="0" max="59" value="00">
+                <label for="shortSec">Seconds</label>
+              </div>
+            </div>
+          </div>
+
+          <!--Long Break Time Input Section-->
+          <div class="timeInput" id="longBreakSet">
+            <h2>Long Break</h2>
+            <div class="timeLayout">
+              <div class="timeInd">
+                <input type="number" id="longMin" name="longMin" min="0" max="99" value="15">
+                <label for=longMin">Minutes</label>
+              </div>
+              <p>:</p>
+              <div class="timeInd">
+                <input type="number" id="longSec" name="longSec" min="0" max="59" value="00">
+                <label for="longSec">Seconds</label>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!--Button to submit the times for the pomodoro timer cycle-->
+        <input type="button" id="startPomo" class="startPomo" value="Start">
+
+      </form>
+
+      <!--HTML for the little boxes that show how much time is left in each time period-->
+
+      <!--Little Pomodoro Countdown Box for the Pomodoro Time Section-->
+      <div class="lilPomo" id="pomoSmall">
+        <div class="times">
+          <div class="timeInput">
+            <h2>Pomodoro</h2>
+
+            <!--Input timer-->
+            <p id="pomoCount"></p>
+          </div>
+
+        </div>
+
+        <!--Button that stops the countdown and resets it to the big pomodoro form-->
+        <button class="stopPomo" id="pomoStop">Stop</button>
+
+      </div>
+
+      <!--Little Pomodoro Countdown Box for the Short Break Time Section-->
+      <div class="lilPomo" id="shortSmall">
+        <div class="times">
+          <div class="timeInput">
+            <h2>Short Break</h2>
+
+            <!--Input timer-->
+            <p id="shortCount"></p>
+          </div>
+
+        </div>
+
+        <!--Button that stops the countdown and resets it to the big pomodoro form-->
+        <button class="stopPomo" id="shortStop">Stop</button>
+
+      </div>
+
+      <!--Little Pomodoro Countdown Box for the Long Break Time Section-->
+      <div class="lilPomo" id="longSmall">
+        <div class="times">
+          <div class="timeInput">
+            <h2>Long Break</h2>
+
+            <!--Input timer-->
+            <p id="longCount"></p>
+          </div>
+
+        </div>
+
+        <!--Button that stops the countdown and resets it to the big pomodoro form-->
+        <button class="stopPomo" id="longStop">Stop</button>
+
+      </div>
+
+      <!--The section that contains the description of how a pomodoro timer works-->
+      <div class="pomoDescription">
+        <p>The Pomodoro Technique is a time management method where you split up your work/study time with short breaks
+          between intervals. Typically one pomodoro work period lasts for around 25 minutes, and is then followed by a
+          short break, usually around 5 - 10 minutes. After 4 pomodoro work periods, take one long break, which usually
+          takes around 15 - 20 minutes. Splitting up your time like this makes it less likely that you get burned out by
+          your long work hours, and many people find the Pomodoro Technique useful for increasing productivity.</p>
       </div>
 
     </div>
 
+    <!--The main page containing the reference list-->
+    <div class="main" id = "referenceList">
+      <h1>Reference List</h1>
+
+      <!--The section on the top of the page that contains the add new references to page buttons-->
+      <div class="addReferences">
+        <button class="newReferences" id="newGroup">Add New Group</button>
+        <button class="newReferences" id="newSingle">Add New Single</button>
+      </div>
+
+      <!-- unordered list where reference list is-->
+      <ul class="referenceList"></ul>
+
+
+      <!--Add New Group Reference Form-->
+      <form class="newGroupRefForm">
+        <h2>Add New Group Reference</h2>
+        <button type="button" class="newTaskOut" id="closeGroupRefForm">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="groupRefName">Name of Group Reference</label><br>
+          <input class="fullIn" type="text" id="groupRefName" name="groupRefName" required><br>
+
+          <input type="submit" id="groupRefSubmit" class="addSubmit" value="Add">
+        </div>
+      </form>
+
+
+      <!--Add New Single Reference on Page form-->
+      <form class="newSingleRefForm">
+        <h2>Add New Reference</h2>
+        <button type="button" class="newTaskOut" id="closeSingleRefForm">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="singleRefName">Name of Reference</label><br>
+          <input class="fullIn" type="text" id="singleRefName" name="singleRefName" required><br>
+
+          <label for="urlName">URL of Reference</label><br>
+          <input class="fullIn" type="text" id="urlName" name="urlName" required><br>
+          
+          <input type="submit" id="singleRefSubmit" class="addSubmit" value="Add">
+        </div>
+        
+      </form>
+
+      <!--Add New Single Reference in Group Reference form. Looks the same in html, but exists to make javascript easier-->
+      <form class="newSingleRefFormInGroup">
+        <h2>Add New Reference</h2>
+        <button type="button" class="newTaskOut" id="closeSingleRefInGroupForm">
+          <img class="icon" src="images/Remove.png" alt="Remove Task Icon">
+        </button>
+        <div>
+          <label for="singleRefInGroupName">Name of Reference</label><br>
+          <input class="fullIn" type="text" id="singleRefInGroupName" name="singleRefInGroupName" required><br>
+
+          <label for="urlNameInGroup">URL of Reference</label><br>
+          <input class="fullIn" type="text" id="urlNameInGroup" name="urlNameInGroup" required><br>
+          
+          <input type="submit" id="singleRefInGroupSubmit" class="addSubmit" value="Add">
+        </div>
+      </form>
+
+    </div>
+
+    <!--HTML for the stopwatch-->
+    <div class = "stopwatch">
+          <!--default stopwatch that is a button that looks like a clock-->
+          <button type = "button" class = "stopwatchButton">
+            <span class = "watchSquare"></span>
+            <span class = "stopwatchInner">
+              <span class = "minuteHand"></span>
+              <span class = "hourHand"></span>
+            </span>
+          </button>
+  
+          <!--stopwatch after it has been clicked that starts counting up-->
+          <div class = "stopwatchCount">
+  
+            <!--The counter that counts up-->
+            <p id = "countText"></p>
+  
+            <!--Button that pauses the stopwatch count-->
+            <button type = "button" class = "stopwatchPause">
+              <img class = "icon" src = "images/PauseWhite.png" alt = "Pause Stopwatch Button">
+            </button>
+  
+            <!--Button that starts the stopwatch counting again-->
+            <button type = "button" class = "stopwatchStart">
+              <img class = "icon" src = "images/PlayWhite.png" alt = "Start Stopwatch Button">
+            </button>
+  
+            <!--Button that stops the counter and resets the stopwatch to the original look-->
+            <button type = "button" class = "stopwatchStop">
+              <img class = "icon" src = "images/RemoveWhite.png" alt = "Stop and Reset Stopwatch Button">
+            </button>
+          </div>
+        </div>
 
     <!--HTML for music player-->
     <div class="musicPlayer">
       <!--album cover portion of music player-->
-      <img class="album" src="https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
+      <img class="album" id = "currentCover" src="https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
 
       <!--Rest of the things on the music player-->
       <div class="musicMain">
@@ -232,6 +429,8 @@
             <div id="slider">
               <div id="elapsed"></div>
             </div>
+
+            <!--HTML for the little timer underneath the timeline-->
             <p id="timer">0:00</p>
           </div>
         </div>
@@ -239,7 +438,7 @@
         <!--Volume slider for the music player-->
         <div class = "volumeSettings">
           <img class = "icon" src = "images/Volume.png" alt = "volumn icon">
-          <input id = "volume" type="range" min="1" max="100"></input>
+          <input id = "volume" type="range" min="0" max="100"></input>
         </div>
 
 
@@ -248,44 +447,107 @@
           <img class="icon" src="images/Playlist.png" alt="Playlist Icon">
         </button>
       </div>
+
+      <!--box that contains all the songs the user can play. Each song is a button that plays the song when it is pressed-->
+      <ul class = "songList">
+          <!--Button that contains the first song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">  
+            <span class = "songInfo">
+              <span class = "songName">Welcome to the Black Parade</span>
+              <span class = "artistName">My Chemical Romance</span>
+            </span>
+            <audio src="music/Welcome To The Black Parade.mp3" id="song1"></audio>
+          </button>
+
+          <!--Button that contains the second song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
+            <span class = "songInfo">
+              <span class = "songName">The Sharpest Lives</span>
+              <span class = "artistName">My Chemical Romance</span>
+            </span>
+            <audio src="music/The Sharpest Lives.mp3" id="song2"></audio>
+          </button>
+
+          <!--Button that contains the third song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
+            <span class = "songInfo">
+              <span class = "songName">I Don't Love You</span>
+              <span class = "artistName">My Chemical Romance</span>
+            </span>
+            <audio src="music/I Don't Love You.mp3" id="song3"></audio>
+          </button>
+
+          <!--Button that contains the fourth song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://medium-media.vgm.io/albums/89/57698/57698-1561718273.jpg">
+            <span class = "songInfo">
+              <span class = "songName">Snowing Town</span>
+              <span class = "artistName">Donmaru</span>
+            </span>
+            <audio src="music/Snowing Town.mp3" id="song4"></audio>
+          </button>
+
+          <!--Button that contains the fifth song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://medium-media.vgm.io/albums/89/57698/57698-1561718273.jpg">
+            <span class = "songInfo">
+              <span class = "songName">Giniro Haruka Piano Ver</span>
+              <span class = "artistName">Donmaru</span>
+            </span>
+            <audio src="music/Giniro Haruka Piano Ver.mp3" id="song5"></audio>
+          </button>
+
+          <!--Button that contains the sixth song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://medium-media.vgm.io/albums/89/57698/57698-1561718273.jpg">
+            <span class = "songInfo">
+              <span class = "songName">The Season of Dreams Piano Ver</span>
+              <span class = "artistName">Donmaru</span>
+            </span>
+            <audio src="music/The Season of Dreams Piano Ver.mp3" id="song6"></audio>
+          </button>
+
+          <!--Button that contains the seventh song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://static.myfigurecollection.net/upload/items/big/1107708.jpg?rev=1609713058">
+            <span class = "songInfo">
+              <span class = "songName">Summer Pockets</span>
+              <span class = "artistName">Mizutsuki Ryou</span>
+            </span>
+            <audio src="music/Summer Pockets.mp3" id="song7"></audio>
+          </button>
+
+          <!--Button that contains the eighth song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://static.myfigurecollection.net/upload/items/big/1107708.jpg?rev=1609713058">
+            <span class = "songInfo">
+              <span class = "songName">White Loneliness</span>
+              <span class = "artistName">Mizutsuki Ryou</span>
+            </span>
+            <audio src="music/White Loneliness.mp3" id="song8"></audio>
+          </button>
+
+          <!--Button that contains the nineth song-->
+          <button type = "button" class = "songs">
+            <img class = "album" src = "https://static.myfigurecollection.net/upload/items/big/1107708.jpg?rev=1609713058">
+            <span class = "songInfo">
+              <span class = "songName">Sea, You Next</span>
+              <span class = "artistName">Maeda Jun</span>
+            </span>
+            <audio src="music/Sea, You Next.mp3" id="song9"></audio>
+          </button>
+  
+  
+      </ul>
     </div>
-
-    <!--box that contains all the songs the user can play-->
-    <ul class = "songList">
-        <!--where the music comes from-->
-        <button type = "button" class = "songs">
-          <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">  
-          <span class = "songInfo">
-            <span class = "songName">Welcome to the Black Parade</span>
-            <span class = "artistName">My Chemical Romance</span>
-          </span>
-          <audio src="music/Welcome To The Black Parade.mp3" id="song1"></audio>
-        </button>
-
-        <button type = "button" class = "songs">
-          <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
-          <span class = "songInfo">
-            <span class = "songName">The Sharpest Lives</span>
-            <span class = "artistName">My Chemical Romance</span>
-          </span>
-          <audio src="music/The Sharpest Lives.mp3" id="song2"></audio>
-        </button>
-
-        <button type = "button" class = "songs">
-          <img class = "album" src = "https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg">
-          <span class = "songInfo">
-            <span class = "songName">I Don't Love You</span>
-            <span class = "artistName">My Chemical Romance</span>
-          </span>
-          <audio src="music/I Don't Love You.mp3" id="song3"></audio>
-        </button>
-
-
-    </ul>
+   
   </div>
 
 
-  <script type = "module" src="tasklist.js"></script>
+  <script type = "module" src="script.js"></script>
 </body>
 
 </html>

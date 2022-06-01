@@ -1,6 +1,5 @@
 @import "reset.scss";
 @import "typography.scss";
-@import "layout.scss";
 
 /*hides the scroll bars*/
 body{
@@ -96,6 +95,7 @@ button:hover{
 .navlinks a:hover{
   color: #EBA640;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 
@@ -168,7 +168,7 @@ button:hover{
 .taskOut{
   position: absolute; 
   left: 18.5vw;
-  top: 1vh;
+  top: 1.5vh;
 }
 
 /*makes the remove task column button a little bigger*/
@@ -196,6 +196,13 @@ button:hover{
   background-color: white;
   border: 0.1px solid black;
   border-radius: 10px;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+
+/*slightly darkens the add task button when user hovers over it*/
+.taskAdd:hover{
+  background-color: #E3E3E3;
 }
 
 /*makes the add task button icon a little bit bigger*/
@@ -270,8 +277,16 @@ button:hover{
   border: 2px solid black;
   border-radius: 10px;
   margin-bottom: 3vh;
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 
+/*slightly darkens the add task column button when user hovers over it*/
+.taskColumnAdd:hover{
+  background-color: #E3E3E3;
+}
+
+/*sets size of the add icon inside the add task column button*/
 .taskColumnAdd .icon{
   height: 3vh;
 }
@@ -284,18 +299,22 @@ button:hover{
   top: 2vh;
 }
 
+/*sets the size of the close task form button*/
 .newTaskOut .icon{
   height: 3vh;
 }
 
+/*creates space underneath the inputs for the forms*/
 input{
   margin-bottom: 2vh;
 }
 
+/*creates space under the choose priority question in the form*/
 select{
   margin-bottom: 2vh;
 }
 
+/*sets the size of the add new task form*/
 .newTaskForm{
   width: 30vw;
   min-height: 50vh;
@@ -303,6 +322,7 @@ select{
   margin-left: -15vw; /* Negative half of width. */
 }
 
+/*sets the width of the form inputs*/
 .fullIn{
   width: 25vw;
 }
@@ -312,13 +332,19 @@ select{
   display: block;
   background: #EBA640;
   color: black;
-  
   border-radius: 25px;
   width: 7vw;
   height: 5vh;
   margin: auto;
   margin-top: 2vh;
   cursor: pointer;
+  transition-property: background;
+  transition-duration: 0.2s;
+}
+
+/*slightly darkens submit button when user hovers over it*/
+.addSubmit:hover{
+  background: #D99A3D;
 }
 
 /*places the new task column form in the center of the screen and also sets its width*/
@@ -406,6 +432,13 @@ select{
   margin: auto;
   margin-top: 4vh;
   cursor: pointer;
+  transition-property: background;
+  transition-duration: 0.2s;
+}
+
+/*slightly darkens the start pomodoro button when the user hovers over it*/
+.startPomo:hover{
+  background: #E3E3E3;
 }
 
 /*styles the stop pomodoro timer buttons*/
@@ -420,6 +453,13 @@ select{
   margin: auto;
   margin-top: 4vh;
   cursor: pointer;
+  transition-property: background;
+  transition-duration: 0.2s;
+}
+
+/*slightly darkens the stop pomodoro button when user hovers over it*/
+.stopPomo:hover{
+  background: #A31212;
 }
 
 /*styles the time inputs for the pomodoro timer*/
@@ -489,7 +529,6 @@ select{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-bottom: 1vh;
 }
 
 /*makes sure references go down in a column*/
@@ -508,7 +547,14 @@ select{
   border: 2px solid black;
   border-radius: 25px;
   margin-right: 2vw;
-  font-size: 1em;
+  font-size: 0.9em;
+  transition-property: background;
+  transition-duration: 0.2s;
+}
+
+/*slightly darkens the add new references onto page buttons when user hovers over them*/
+.newReferences:hover{
+  background-color: #E3E3E3;
 }
 
 /*styles the top box of the group references*/
@@ -532,6 +578,7 @@ select{
   text-decoration: underline;
 }
 
+/*changes the cursor when user hovers over the open all links button*/
 .groupTitle a:hover{
   cursor: pointer;
 }
@@ -734,7 +781,7 @@ select{
 /*styles the stopwatch counter text*/
 #countText{
   color: white;
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: 400;
 }
 
@@ -756,7 +803,7 @@ select{
 .musicMain{
   background-color: black;
   z-index: 999;
-  width: 91vw;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -791,12 +838,21 @@ select{
   justify-content: space-around;
 }
 
-/*formats the music buttons*/
+/*formats the space that contains the music buttons*/
 .musicButtons{
   width: 15vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+/*makes music buttons larger when user hovers over them*/
+.musicButtons .icon{
+  transition-property: height;
+  transition-duration: 0.2s;
+}
+.musicButtons .icon:hover{
+  height: 4.5vh;
 }
 
 /*formats the timeline and time count that shows how much of the music has been played*/
@@ -825,10 +881,10 @@ select{
 
 /*styles the little timer at the bottom of the timeline*/
 #timer {
-  margin-top: 1vh;
+  margin-top: 1.5vh;
   color: white;
   line-height: 0;
-  font-size: 9pt;
+  font-size: 0.7em;
   float: right;
   font-family: Arial, Sans-Serif;
 }
@@ -876,6 +932,22 @@ select{
   cursor: pointer; /* Cursor on hover */
 }
 
+/*places the playlist button at the right side of the music player*/
+.playlistButton{
+  position: absolute;
+  left: 95vw;
+}
+
+/*makes playlist button slightly larger when user hovers over it*/
+.playlistButton .icon{
+  transition-property: height;
+  transition-duration: 0.2s;
+}
+.playlistButton .icon:hover{
+  height: 4.5vh;
+}
+
+
 /*styles the pop out section that actually contains all the songs*/
 .songList{
   z-index: 998;
@@ -883,10 +955,11 @@ select{
   right: -25vw;
   top: 0;
   width: 25vw;
-  height: 100vh;
+  height: 88vh;
   background-color: black;
   transition-property: right;
   transition-duration: 0.2s;
+  overflow-y: scroll;
 }
 
 /*positions the songlist into the screen when it is clicked*/
@@ -919,7 +992,9 @@ select{
 
 /*styles the text for the name of the song*/
 .songName{
-  font-size: 1.2em;
+  display: flex;
+  text-align: left;
+  font-size: 1em;
   padding-left: 1vw;
   margin-bottom: 1vh;
   color: white;
@@ -927,7 +1002,9 @@ select{
 
 /*styles the text for the name of the artist*/
 .artistName{
+  text-align: left;
   font-weight: 400;
+  font-size: 0.9em;
   padding-left: 1vw;
   color: white;
 }

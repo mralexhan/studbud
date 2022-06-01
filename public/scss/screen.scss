@@ -115,16 +115,20 @@
   .navbox:hover{
     background-color: #EBA640;
     color: black;
+    cursor: pointer;
   }
-  
+
+  /*makes everything go down in a column*/
   .main{
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
+  /*removes the padding in the heading so it can center properly*/
   .main h1{
     padding: 0;
+    margin-bottom: 1vh;
   }
 
   /*makes reference list content go down*/
@@ -139,24 +143,34 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
+  /*resizes the task column for mobile*/
   .taskColumn{
     width: 85vw;
     margin-right: 0vw;
   }
 
+  /*moves the remove task column button to fit the task column location*/
   .taskOut{
     left: 75vw;
   }
 
+  /*resizes remove task column button*/
+  .taskOut .icon{
+    height: 4vh;  
+  }
+
+  /*creates space around the task column heading*/
   .taskColumn h2{
     margin: 2vw;
   }
-  
+
+  /*resizes task card for mobile*/
   .taskCard{
     width: 80vw;
   }
 
+  /*lays out mobile version of the remove task and completion buttons*/
   .taskCard button{
     border: none;
     margin-top: 1vh;
@@ -165,38 +179,40 @@
     margin-bottom: 2vh;
   }
 
+  /*resizes add task button for mobile*/
   .taskAdd{
     width: 80vw;
   }
 
+  /*resizes add task column button for mobile*/
   .taskColumnAdd{
     width: 85vw;
   }
 
+  /*resizes form input for mobile*/
   .fullIn{
     width: 72vw;
   }
 
+  /*lays out close new task form button for mobile*/
   .newTaskOut{
   left: 72vw;
   top: 1vh;
   }
 
+  /*resizes and readjusts new task form form for mobile*/
   .newTaskForm{
     width: 80vw;
     margin-left: -40vw;
   }
 
-  .newTaskForm{
-    width: 80vw;
-    margin-left: -40vw;
-  }
-
+  /*resizes and readjusts new task column form form for mobile*/
   .newTaskColumnForm{
     width: 80vw;
     margin-left: -40vw;
   }
-  
+
+  /*resizes submit button in form for mobile*/
   .addSubmit{
     width: 20vw;
   }
@@ -217,6 +233,7 @@
     min-height: 38vh;
   }
 
+  /*centers the heading of the lilPomo*/
   .lilPomo h2{
     text-align: center;
   }
@@ -260,6 +277,7 @@
     width: 30vw;
   }
 
+  /*styles the stop timer button*/
   .stopPomo{
     font-size: 1.2em;
     width: 30vw;
@@ -270,17 +288,20 @@
 
   
   /*reference list css*/
+
+  /*resizes add reference button space for mobile*/
   .addReferences{
     width: 90vw;
     margin-top: 3vh;
   }
 
+  /*resizes the add new references on page butons*/
   .newReferences{
     width: 30vw;
-    font-size: 0.7em;
     margin-bottom: 3vh;
   }
 
+  /*makes the size of the text within the reference list smaller*/
   .referenceList{
     font-size: 0.8em;
   }
@@ -294,6 +315,7 @@
     padding-left: 2vw;
   }
 
+  /*makes the front of each reference stick to the left in a column*/
   .referenceFront{
     display: flex;
     flex-direction: column;
@@ -302,6 +324,7 @@
     margin-bottom: 1vh;
   }
 
+  /*sets the space the reference titles can take up*/
   .referenceFront h2{
     width: 70vw;
     font-size: 1.3em;
@@ -320,21 +343,24 @@
     margin-top: 2vh;
   }
 
+  /*styles the open link button*/
   .singleReference a{
     margin-bottom: 1vh;
     margin-left: 70vw;
     font-size: 1.2em;
   }
-  
+
+  /*creates a bit of space on the left of group reference title*/
   .groupTitle{
     padding-left: 2vw;
   }
 
+  /*creates a bit of space next to the open/close group reference button*/
   .groupTitle button{
     margin-right: 1vw;
   }
 
-  /*all these need their own css because the different margin sizes in their web form css overwrites the default form css if we were to try implementing that*/
+  /*resizes the forms for mobile. all these need their own css because the different margin sizes in their web form css overwrites the default form css if we were to try implementing that*/
   .newGroupRefForm{
     width: 80vw;
     margin-left: -40vw;
@@ -350,6 +376,15 @@
     margin-left: -40vw;
   }
 
+  /*make the open and close group icons a little bigger in mobile*/
+  .openGroup .icon{
+    height: 3.5vh;
+  }
+
+  .closeGroup .icon{
+    height: 3.5vh;
+  }
+
 
   /*stopwatch css*/
   .stopwatch{
@@ -363,43 +398,63 @@
     width: 10vh;
     height: 10vh;
   }
-
-  #countText{
-    font-size: 1.5em;
-  }
-
   
   /*music player css*/
   .songName{
     font-size: 1em;
   }
 
+  /*makes the songs in the songlist take up more space*/
   .songs{
     width: 60vw;
   }
-  
+
+  /*makes the songlist take up more space*/
   .songList{
     width: 60vw;
     right: -60vw;
   }
 
+  /*makes sure songlist moves onto the screen properly when clicked on*/
   .songList.active{
     right: 0vw;
   }
 
+  /*makes the artist name a little smaller*/
   .artistName{
     font-size: 0.8em;
   }
 
-  .musicMain{
-    width: 85vw;
-    padding-right: 10vw;
+  /*makes sure the music player is formatted normally*/
+  .musicInfo{
+    width: 55vw;
   }
+
+  /*lets the play song button be formatted like normal*/
   .musicMiddle{
+    position: absolute;
+    left: 68vw;
+  }
+
+  /*makes certain aspects of the music player disappear due to limited space*/
+  .musicTimer{
+    display: none;
+  }
+
+  #nextSong{
+    display: none;
+  }
+
+  #prevSong{
     display: none;
   }
 
   .volumeSettings{
     display: none;
+  }
+
+  /*sets the location of the playlist button*/
+  .playlistButton{
+    left: 87vw;
   }
 }

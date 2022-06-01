@@ -3,6 +3,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /*makes the scroll bar disappear. code from https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll?page=1&tab=scoredesc#tab-top*/
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+*::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 
 /*resets all ::before things*/

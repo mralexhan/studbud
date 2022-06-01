@@ -17,7 +17,7 @@ stopwatchButton.addEventListener("click", function(){
   
   //changes the stopwatch background to be more capsule shaped
   stopwatch.style.top = "77vh";
-  stopwatch.style.width = "18vw";
+  stopwatch.style.width = "32vh";
   stopwatch.style.height = "7.5vh";
   stopwatch.style.borderRadius = "50px";
 
@@ -28,7 +28,7 @@ stopwatchButton.addEventListener("click", function(){
   let current = 0;
   let Mins = 0;
 
-  let count = setInterval(watchCount, 10);
+  let count = setInterval(watchCount, 10); //runs the watchCount function every 10 milliseconds
 
   function watchCount(){
     //if the stopwatch isn't paused, keep increasing current time. If it is paused, it won't increase
@@ -66,8 +66,8 @@ stopwatchButton.addEventListener("click", function(){
 
     //changes the stopwatch back to what it initially looked like
     stopwatch.style.top = "75vh";
-    stopwatch.style.width = "5vw";
-    stopwatch.style.height = "5vw";
+    stopwatch.style.width = "10vh";
+    stopwatch.style.height = "10vh";
     stopwatch.style.borderRadius = "50%";
   })
   
