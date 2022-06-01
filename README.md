@@ -7,16 +7,20 @@ The primary target audience for my Studbud Web App design is students in primari
 **Tasklist Page**
 
 **Tasklist Page - Original Design**
+
 <img src = "mkimages/ReferenceBrowserOriginal.png" width="700px"/>
 
 <img src = "mkimages/AddNewTaskOriginal.png" width="700px"/>
+</br>
 
 **Tasklist Page - Final Web App Version**
+
 <img src = "mkimages/ReferenceBrowserNew.png" width="700px"/>
 
 <img src = "mkimages/AddNewTaskNew.png" width="700px"/>
 
 <img src = "mkimages/AddTaskColumn.png" width="700px"/>
+</br>
 
 **Tasklist Page - Mobile**
 
@@ -40,12 +44,14 @@ Across all the pages, I also centred and increased the size of their headings in
 <img src = "mkimages/BigPomoOriginal.png" width="700px"/>
 
 <img src = "mkimages/LittlePomoOriginal.png" width="700px"/>
+</br>
 
 **Pomodoro Timer - Final Web App Version**
 
 <img src = "mkimages/BigPomoNew.png" width="700px"/>
 
 <img src = "mkimages/LittlePomoNew.png" width="700px"/>
+</br>
 
 **Pomodoro Timer - Mobile**
 
@@ -61,18 +67,22 @@ When it comes to the mobile version, the main change is that I made all the inpu
 **Reference List Page**
 
 **Reference List Page - Original Design**
+
 <img src = "mkimages/ReferenceBrowserOriginal.png" width="700px"/>
 
 <img src = "mkimages/AddSingleReferenceOriginal.png" width="700px"/>
 
 <img src = "mkimages/AddGroupReferenceOriginal.png" width="700px"/>
+</br>
 
 **Reference List Page - Final Web App Version**
+
 <img src = "mkimages/ReferenceBrowserNew.png" width="700px"/>
 
 <img src = "mkimages/AddSingleReferenceNew.png" width="700px"/>
 
 <img src = "mkimages/AddGroupReferenceNew.png" width="700px"/>
+</br>
 
 **Reference List Page - Mobile**
 
@@ -88,13 +98,16 @@ In the mobile version, I also changed the group reference heading to go down in 
 **Widgets (Stopwatch + Music Player)**
 
 **Widgets (Stopwatch + Music Player) - Original Design**
+
 <img src = "mkimages/TaskListBrowserOriginal.png" width="700px"/>
 
 <img src = "mkimages/StopwatchOpenOriginal.png" width="700px"/>
 
 <img src = "mkimages/PlaylistOriginal.png" width="700px"/>
+</br>
 
 **Widgets (Stopwatch + Music Player) - Final Web App**
+
 <img src = "mkimages/TaskListBrowserNew.png" width="700px"/>
 
 <img src = "mkimages/StopwatchOpenNew.png" width="700px"/>
