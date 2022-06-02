@@ -124,3 +124,15 @@ In the mobile version, I also changed the group reference heading to go down in 
 There were a few changes to my widgets from my mockup design to my final web app design. In the final web app, I made the stopwatch and its pop up a little bigger. I thought this would make the stopwatch function more obvious, as the original version was a little too small, and a bit easy to miss. In regards to the music player, I added a music timeline and time display underneath the pause/play, next song, and previous song buttons. This allows users to know how far along a song they currently are. Honestly, there&#39;s no real design reason I added this function. This is just a staple feature to any music player, and not having it just makes the player feel incomplete. Another change I made is that I made the pop-out playlist cover the header as well as the main section. This is because, with the way the page is constricted on the browser, having the playlist be further covered by both the header and the music player makes it feel incredibly claustrophobic. Letting the playlist also cover the header gives this playlist more breathing room, making it more comfortable to look at and scroll through without getting in the way of any of its functionality.
 
 The main change I made in the mobile version of my widgets is that I added a play/pause button in the music player. In the original design, there was nothing in the music player other than the title and the playlist. This means that the only way the user could play a song was to open the playlist and tap a song. This is incredibly inconvenient, and there&#39;s no way for them to pause the song either. With the play/pause button present, the user could easily play the music they want to listen to. Unfortunately, there still wasn&#39;t enough space to fit the next song button, previous song button, and timeline. However, having the play/pause button should at least make a minimum viable version of the music player on mobile.
+
+**References**
+
+Dongas, R. (n.d.). Animated Sliding Menu Code Example. Retrieved from https://codepen.io/robdongas/pen/MWvKMRp
+
+Kirkby, O. (n.d.). Audio Player Code Example. Retrieved from https://codepen.io/ozzie/pen/YPOBEJ
+
+Stack Overflow. (2011). Check if a JavaScript string is a URL. Retrieved from https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+
+Stack Overflow. (2013). Hide scroll bar, but while still being able to scroll. Retrieved from https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll?page=1&tab=scoredesc#tab-top
+
+W3Schools. (n.d.). How to Create Range Sliders. Retrieved from https://www.w3schools.com/howto/howto_js_rangeslider.asp
